@@ -1,0 +1,137 @@
+.TSHRTS {
+    display: flex;
+    /* grid-template-rows: repeat(auto, minmax(159px,200px)); */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem auto;
+    flex-wrap: wrap;
+}
+
+
+.tshirt-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    font-size: 25px;
+}
+
+.hr {
+    align-content: center;
+    width: 80%;
+    margin: .5rem auto;
+    color: rgb(218, 205, 205);
+}
+
+.proDiv {
+    margin: 1.8rem;
+    width: fit-content;
+    height: 23rem;
+    /* background-color: rgb(46, 232, 170); */
+}
+
+.proDiv a{
+    text-decoration: none;
+    color: black;
+}
+
+.imgDiv {
+    height: 14rem;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgDiv-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+.proDiv-item {
+    height: 23rem;
+    width: 16rem;
+    box-shadow: 2px 1px 10px #888888;
+    cursor: pointer;
+}
+
+.proDiv-content {
+    margin: .5rem;
+}
+
+.item-category {
+    color: gray;
+    font-size: x-small;
+    margin-bottom: .5rem;
+}
+
+/* text-gray-900 title-font text-lg font-medium */
+
+.item-title {
+    font-size: large;
+    font-weight: 700;
+    margin: .6rem 0;
+}
+
+.desc {
+    margin: .5rem 0;
+    font-size: medium;
+}
+
+.desc-text {
+    margin: .7rem 0;
+}
+
+.variants {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+    position: absolute;
+}
+
+.sizes{
+    display: flex;
+    flex-direction: row;
+}
+
+.item-size {
+    color: rgb(60, 58, 58);
+    font-size: small;
+    border: .5px solid gray;
+    padding: 2px;
+    margin-left: 3px;
+}
+.item-size:hover{
+    color: rgb(118, 105, 235);
+    cursor: pointer;
+    box-shadow: 2px 1px 4px #e7d1d1;
+}
+
+.colorDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none */
+
+.item-color {
+    background-color: #04AA6D;
+    padding: 8px;
+    text-decoration: none;
+    position: -ms-page;
+    display: inline-block;
+    border-radius: 50%;
+    margin: -8px 2px 1px 2px;
+    cursor: pointer;
+}
+
+.item-color:hover {
+    border: 1px solid rgb(101, 99, 99);
+}

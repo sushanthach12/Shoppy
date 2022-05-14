@@ -1,0 +1,171 @@
+.slugSec {
+    width: inherit;
+    padding: 3rem 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.Imgcontainer {
+    width: 40vw;
+}
+.proIMG{
+    margin: 0 3rem;
+}
+
+.proDetail {
+    width: 60vw;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.proPreHead {
+    font-size: 15px;
+    font-family: inherit;
+    color: grey;
+    letter-spacing: 2px;
+    padding: .2rem 0;
+}
+
+.proTitle {
+    padding: .2rem 0;
+    letter-spacing: 1px;
+    font-weight: 1000;
+}
+
+.proReview {
+    height: 1.5rem;
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    margin: .5rem 0;
+}
+
+.reviewStarDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.reviewStar {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: .2rem;
+    color: pink;
+}
+
+.proReviewNo {
+    margin-left: .6rem;
+}
+
+.proSocLinks {
+    display: flex;
+    flex-direction: row;
+    margin-left: .5rem;
+    padding-left: .5rem;
+    border-left: 2px solid pink;
+}
+
+.proSoclink {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: .2rem;
+}
+
+
+.proDesc {
+    margin: 1rem 0;
+}
+
+.proVariants {
+    display: flex;
+    margin: 2rem 0;
+}
+
+.varColor {
+    margin: 0 .5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.proColor {
+    padding: 8px;
+    height: 10px;
+    margin: 0 1px;
+    /* text-decoration: none; */
+    border-radius: 70%;
+    cursor: pointer;
+    border: none;
+}
+
+.varSize {
+    display: flex;
+    margin-left: .2rem;
+    padding-left: .5rem;
+    border-left: 2px solid pink;
+}
+
+.sizeOption {
+    margin-left: .5rem;
+    align-items: center;
+}
+
+.select {
+    min-width: 2rem;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    padding: 0.1em 0.5em;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.proPriceBuy {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.CheckBuyBtn{
+    display: flex;
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.proBuybtn {
+    flex: 0 1 auto;
+    margin: 0 .5rem;
+    padding: .7rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    border: none;
+    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}
+
+.proBuybtn:hover {
+    cursor: pointer; 
+    background-position: right center; 
+}
+
+.proPrice{
+    font-size: x-large;
+    font-weight: bold;
+    letter-spacing: 2px;
+}

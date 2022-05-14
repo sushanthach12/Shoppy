@@ -1,0 +1,136 @@
+.LoginMain{
+    margin: 6rem auto;
+    /* background-image: url("https://awplife.com/wp-content/uploads/2017/02/google-maps-tutorial.jpg");
+    background-repeat: no-repeat;
+    background-size: contain; */
+}
+
+
+.LoginMainContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 24rem;
+    margin: 0 auto;
+}
+
+.LoginHeadDiv{
+    text-align: center;
+}
+
+.LoginTitle{
+    margin: 0 0 .5rem 0;
+}
+
+.LoginSubTitle{
+    font-size: 1rem;
+    color: rgb(79, 78, 78)
+
+}
+
+.LoginCredentials{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+}
+
+
+.LoginEmail{
+    display: flex;
+    flex-direction: column;
+    margin: .2rem 0;
+    width: 15vw;
+}
+.LoginPass{
+    display: flex;
+    flex-direction: column;
+    margin: .2rem 0;
+    width: 15vw;
+
+}
+
+.credTitle{
+    font-size: 1rem;
+    margin: .5rem 0;
+}
+
+/* "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" */
+
+.LoginInp{
+    width: 100%;
+    border-radius: 3px ;
+    border: 1px solid rgb(60, 82, 179);
+    color: black;
+    padding: .5rem .5rem;
+}
+
+.LoginBtnDiv{
+    margin: 1.5rem 0;
+}
+
+
+.LoginBtn{
+    flex: 0 1 auto;
+    margin: 0 .5rem;
+    padding: .7rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    border: none;
+    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}
+
+.LoginBtn:hover {
+    cursor: pointer; 
+    background-position: right center; 
+}
+
+/* .LoginSocDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    margin: 1.5rem 0;
+}
+
+.LoginSocLink {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: 1rem;
+} */
+
+.LoginLinks{
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.LoginLink{
+    width: 100%;
+    display: flex;
+    border-radius: 11px;
+    border: .2px solid rgb(232, 229, 229);
+    margin: .2rem 0;
+    padding: .6rem 1.5rem;
+    box-shadow: 5px 5px 20px #dad8d8;
+}
+
+.LoginSocLogo{
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0 1rem 0 0;
+}

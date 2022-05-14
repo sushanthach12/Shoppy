@@ -1,0 +1,135 @@
+.HOME {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+}
+
+.main {
+    margin: 2rem 4rem;
+    color: rgb(18, 17, 17);
+    font-weight: 600;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.main-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.main-head h2 {
+    font-size: medium;
+    letter-spacing: .05em;
+    margin-bottom: .4em;
+    color: rgb(229, 123, 140);
+}
+
+.main-head h1 {
+    font-size: xx-large;
+    letter-spacing: .05em;
+    margin-bottom: .4em;
+    font-weight: 600;
+}
+
+.main-head p {
+    font-size: medium;
+    letter-spacing: .08em;
+    align-items: baseline;
+    width: 1/4;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    margin: 4rem 2rem;
+    height: 12rem;
+}
+
+.main-content .div {
+    margin: 2rem 0;
+    /* border-left: 2px solid rgb(180, 176, 176); */
+    height: inherit;
+}
+
+.innerDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0 2rem;
+    height: 100%;
+}
+
+.innerDiv h2 {
+    color: rgb(80, 79, 79);
+    font-size: x-large;
+    font-weight: 300;
+    margin: .2rem 0;
+}
+
+.innerDiv p {
+    color: rgb(0, 0, 0);
+    font-size: medium;
+    font-weight: 300;
+    width: 86%;
+
+}
+
+.arrow{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: .5rem;
+    color: rgb(230, 112, 132);
+}
+
+.rightArrow{
+    font-size: 1.5rem;
+    margin-top: -2px;
+}
+
+
+@media screen and (max-width: 700px) and (min-width: 500px) {
+    .main-head h2 {
+        font-size: small;
+    }
+
+    .main-head h1 {
+        font-size: x-large;
+    }
+
+    .main-head p {
+        font-size: small;
+        letter-spacing: .05em;
+        width: 1/2;
+    }
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .main-head h2 {
+        font-size: x-small;
+    }
+
+    .main-head h1 {
+        font-size: large;
+        letter-spacing: .05em;
+    }
+
+    .main-head p {
+        font-size: small;
+        letter-spacing: .05em;
+        width: 1/4;
+    }
+}

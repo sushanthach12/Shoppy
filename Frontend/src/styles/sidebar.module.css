@@ -1,0 +1,49 @@
+.SideBar{
+    padding: 2rem;
+    width: 18vw;
+    height: inherit;
+    background-color: pink;
+}
+
+.head{
+    display: flex;
+    flex-direction: row;
+}
+
+.headName{
+    margin-left: .5rem;
+}
+
+.sidenav{
+    margin: 6rem 0;
+}
+
+
+.sidenavItem{
+    list-style-type: none;
+    padding: 1rem 2rem;
+}
+
+.foo{
+    bottom: 1.5rem;
+    position: absolute;
+}
+
+.sidelogout{
+    cursor: pointer;
+    height: 2.5rem;
+    width: 6rem;
+    font-size: 1rem;
+    border: pink;
+    border-radius: 6px;
+    margin-left: .5rem;
+    background-color: rgb(234, 20, 212);
+    color: black;
+    box-shadow: 2px 2px 5px #888888;
+    bottom: 0;
+    position: absolute;
+}
+.sidelogout:hover {
+    background-color: rgb(241, 143, 220);
+    cursor: pointer;
+}
