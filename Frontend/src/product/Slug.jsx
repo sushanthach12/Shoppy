@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import productContext from '../context/Product/ProductContext'
 import styles from '../styles/slug.module.css'
 
@@ -7,6 +7,9 @@ const Slug = () => {
 
 	const context = useContext(productContext);
 	const { product, variants, getProduct } = context;
+	const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
+	const [color, setColor] = useState(product.color)
+	const [size, setSize] = useState(product.size)
 
 	const { slug } = useParams();
 
@@ -15,9 +18,17 @@ const Slug = () => {
 		// eslint-disable-next-line 
 	}, [])
 
-	console.log(variants)
-	const [color, setColor] = useState(product.color)
-	const [size, setSize] = useState(product.size)
+
+	const handleClickColor = (e) => {
+		setColor(e.target.value)
+		setSize(size)
+	}
+	const handleClickSize = (e) => {
+		setSize(e.target.value)
+		setColor(color)
+	}
+
+	
 
 	return (
 		<section className={styles.slugSec}>
@@ -77,23 +88,28 @@ const Slug = () => {
 						<span className="mr-3">Color</span>
 
 						<div className={styles.varColor}>
-							{Object.keys(variants).map((c) => {
-								return (
-									<button type={"checkbox"} key={c} className={styles.proColor} style={{ "backgroundColor": `${c}` }} />
-								)
-							})}
+							<div className={styles.sizeOption}>
+								<select className={styles.select}>
+									{Object.keys(variants).map((c) => {
+										return (
+											<option key={c} value={c} onClick={handleClickColor}>{c}</option>
+										)
+									})}
+								</select>
+								<span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center"></span>
+
+							</div>
 
 						</div>
 						<div className={styles.varSize}>
 							<span className="mr-3">Size</span>
 							<div className={styles.sizeOption}>
 								<select className={styles.select}>
-									<option value={size} selected>{size}</option>
-									{Object.keys(variants).includes(color) && Object.keys(variants).includes('Xl') && <option >XL</option>}
-									{Object.keys(variants).includes('M') && <option >M</option>}
-									{Object.keys(variants).includes('L') && <option >L</option>}
-									{Object.keys(variants).includes('XL') && <option >XL</option>}
-									{Object.keys(variants).includes('XXL') && <option >XXL</option>}
+									{sizes.map((s) => {
+										return (
+											Object.keys(variants).includes(color) && Object.keys(variants[color]).includes(`${s}`) && <option key={s} value={s} onClick={handleClickSize}>{s}</option>
+										)
+									})}
 
 								</select>
 								<span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center"></span>
