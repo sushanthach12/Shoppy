@@ -103,6 +103,10 @@
     border: none;
 }
 
+.proColor:focus{
+    border: 1px solid black;
+}
+
 .varSize {
     display: flex;
     margin-left: .2rem;

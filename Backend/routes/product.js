@@ -135,39 +135,27 @@ router.post('/getproduct', async (req, res) => {
 
     try {
 
-        const item = await Product.findOne({ 'slug': req.body.slug });
-        const products = await Product.find({ 'title': item.title });
+        const product = await Product.findOne({ 'slug': req.body.slug });
+        const products = await Product.find({ 'title': product.title });
         let variants = {};
 
 
         for (let item of products) {
             if (Object.keys(variants).includes(item.color)) {
                 variants[item.color][item.size] = {
-                    "desc" : item.desc,
-                    "slug": item.slug,
-                    "price": item.price,
-                    "availableQty": item.availableQty
+                    "slug": item.slug
                 }
             } else {
                 variants[item.color] = {};
                 variants[item.color][item.size] = {
-                    "desc" : item.desc,
                     "slug": item.slug,
-                    "price": item.price,
-                    "availableQty": item.availableQty
                 }
             }
         }
-        
-        const product = {
-            "title": item.title,
-            "desc": item.desc,
-            "image":item.image,
-            "variants": variants
-        }
+      
 
 
-        res.json({ "Success": true, "Product": product });
+        res.json({ "Success": true, "Product": product, "Variants": variants });
 
     }catch (error) {
         console.log(error.message);

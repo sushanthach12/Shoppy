@@ -7,13 +7,19 @@
 
 
 .LoginMainContent{
+    background-color: white;
+    width: 24rem;
+    margin: 0 auto;
+    box-shadow: 1px 5px 10px #eee;
+    border-radius: 20px;
+}
+
+.LoginContent{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
-    width: 24rem;
-    margin: 0 auto;
+    padding: 2rem 0;
 }
 
 .LoginHeadDiv{
@@ -25,9 +31,8 @@
 }
 
 .LoginSubTitle{
-    font-size: 1rem;
+    font-size: .9rem;
     color: rgb(79, 78, 78)
-
 }
 
 .LoginCredentials{
@@ -35,7 +40,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2rem auto;
+    margin: 2rem auto 0 auto;
 }
 
 
@@ -116,7 +121,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0;
+    margin: 1rem 0 0 0;
 }
 
 .LoginLink{

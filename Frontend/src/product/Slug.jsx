@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import productContext from '../context/Product/ProductContext'
 import styles from '../styles/slug.module.css'
@@ -6,7 +6,7 @@ import styles from '../styles/slug.module.css'
 const Slug = () => {
 
 	const context = useContext(productContext);
-	const { product, getProduct } = context;
+	const { product, variants, getProduct } = context;
 
 	const { slug } = useParams();
 
@@ -15,9 +15,9 @@ const Slug = () => {
 		// eslint-disable-next-line 
 	}, [])
 
-	console.log(product, slug);
-
-
+	console.log(variants)
+	const [color, setColor] = useState(product.color)
+	const [size, setSize] = useState(product.size)
 
 	return (
 		<section className={styles.slugSec}>
@@ -75,30 +75,35 @@ const Slug = () => {
 
 					<div className={styles.proVariants}>
 						<span className="mr-3">Color</span>
+
 						<div className={styles.varColor}>
-							<button className={styles.proColor} style={{ "backgroundColor": "red" }}></button>
-							<button className={styles.proColor} style={{ "backgroundColor": "green" }}></button>
-							<button className={styles.proColor} style={{ "backgroundColor": "blue" }}></button>
+							{Object.keys(variants).map((c) => {
+								return (
+									<button type={"checkbox"} key={c} className={styles.proColor} style={{ "backgroundColor": `${c}` }} />
+								)
+							})}
+
 						</div>
 						<div className={styles.varSize}>
 							<span className="mr-3">Size</span>
 							<div className={styles.sizeOption}>
 								<select className={styles.select}>
-									<option>SM</option>
-									<option >M</option>
-									<option >L</option>
-									<option >XL</option>
+									<option value={size} selected>{size}</option>
+									{Object.keys(variants).includes(color) && Object.keys(variants).includes('Xl') && <option >XL</option>}
+									{Object.keys(variants).includes('M') && <option >M</option>}
+									{Object.keys(variants).includes('L') && <option >L</option>}
+									{Object.keys(variants).includes('XL') && <option >XL</option>}
+									{Object.keys(variants).includes('XXL') && <option >XXL</option>}
+
 								</select>
 								<span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center"></span>
 
-								<div>
-								</div>
 							</div>
 						</div>
 
 					</div>
 
-					<hr style={{width:"inherit", margin:"0 auto" , color:"rgb(175, 168, 168)"}}/>
+					<hr style={{ width: "inherit", margin: "0 auto", color: "rgb(175, 168, 168)" }} />
 
 					<div className={styles.proPriceBuy}>
 						<p className={styles.proPrice}>₹{product.price}</p>
