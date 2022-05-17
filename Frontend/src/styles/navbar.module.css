@@ -69,6 +69,18 @@
     flex-wrap: nowrap;
 }
 
+.userInfo{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.username{
+    margin: 0 .5rem;
+}
+
 .navAccimg:hover {
     transform: translateY(-1px);
 }

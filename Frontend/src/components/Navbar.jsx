@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import styles from '../styles/navbar.module.css'
 import { Link } from 'react-router-dom'
 import { RiAccountCircleFill } from 'react-icons/ri'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import userContext from '../context/User/UserContext'
 
 
 const Navbar = ({ user, setUser, setKey }) => {
+    const context = useContext(userContext);
+    const { getUser } = context;
+
+    const [username, setUsername] = useState("")
+
     const handleLogout = () => {
         localStorage.removeItem('token')
         setKey(Math.random)
         setUser({ loggedIn: false })
     }
-    
+
+    useEffect(() => {
+        const GetUser = async () => {
+            const res = await getUser()
+            setUsername(res)
+        }
+        GetUser()
+    }, [setKey])
+
+    console.log(username);
+
     return (
         <div>
             <header className={styles.navbar}>
@@ -40,7 +56,10 @@ const Navbar = ({ user, setUser, setKey }) => {
                         <hr style={{ height: "1.5rem", width: "0", margin: "0 1rem" }} />
                         <div className={styles.navButton}>
                             <div className={styles.accDrop}>
-                                {((localStorage.getItem('token'))) ? <label className={styles.ACCIMG}><RiAccountCircleFill size={28} className={styles.navAccimg} /></label> : ""}
+                                <div className={styles.userInfo}>
+                                    {((localStorage.getItem('token'))) ? <label className={styles.ACCIMG}><RiAccountCircleFill size={28} className={styles.navAccimg} /></label> : ""}
+                                    {localStorage.getItem('token') && <p className={styles.username}>{username}</p>}
+                                </div>
                                 <div className={styles.accDropcontent} id="accDrop">
                                     <Link to="/orders" className={styles.navLink} >Your Orders</Link>
                                     <Link to="/user" className={styles.navLink} >Your Account</Link>
@@ -55,8 +74,8 @@ const Navbar = ({ user, setUser, setKey }) => {
                 </div>
 
 
-            </header>
-        </div>
+            </header >
+        </div >
     )
 }
 

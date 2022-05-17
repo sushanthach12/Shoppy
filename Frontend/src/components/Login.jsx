@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styles from '../styles/login.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import userContext from '../context/User/UserContext'
 
 
 const Login = ({ setKey, setUser }) => {
-  const navigate = useNavigate();
+  const context = useContext(userContext);
+  const { handleLogin } = context;
+
+
 
   const [credentials, setCredentials] = useState({ email: "", password: "" })
 
@@ -16,44 +20,7 @@ const Login = ({ setKey, setUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const res = await fetch(`${process.env.REACT_APP_HOST}/api/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email: credentials.email, password: credentials.password })
-    })
-    const response = await res.json();
-    if (response.Success) {
-      setCredentials({ email: "", password: "" })
-      setUser({ loggedIn: true })
-      setKey(Math.random)
-      localStorage.setItem('token', response.authToken);
-      toast.success('Logged-In Successfully!', {
-        position: "top-left",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      setTimeout(() => {
-        navigate('/')
-      }, 2001);
-    } else {
-      toast.error('Please enter correct credentials!', {
-        position: "top-left",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-
+    handleLogin(credentials,setCredentials, setKey, setUser)
   }
 
   return (
@@ -69,53 +36,54 @@ const Login = ({ setKey, setUser }) => {
         draggable
         pauseOnHover
       />
-      <div className={styles.LoginMainContent}>
-        <div className={styles.LoginContent}>
+      <form onSubmit={handleSubmit}>
+        <div className={styles.LoginMainContent}>
+          <div className={styles.LoginContent}>
 
-          <div className={styles.LoginHeadDiv}>
-            <h2 className={styles.LoginTitle}>Login to continue</h2>
-            <p className={styles.LoginSubTitle}>or Signup with Dystro</p>
-          </div>
-
-          <div className={styles.LoginCredentials}>
-
-            <div className={styles.LoginEmail}>
-              <label htmlFor="email" className={styles.credTitle}>Email</label>
-              <input type="email" id="email" name="email" className={styles.LoginInp} placeholder="Enter your email" onChange={handleChange} value={credentials.email} />
+            <div className={styles.LoginHeadDiv}>
+              <h2 className={styles.LoginTitle}>Login to continue</h2>
+              <p className={styles.LoginSubTitle}>or <Link to={"/signup"}>Signup</Link> with Dystro</p>
             </div>
 
-            <div className={styles.LoginPass}>
-              <label htmlFor="password" className={styles.credTitle}>Password</label>
-              <input type="password" id="password" name="password" className={styles.LoginInp} placeholder="Enter your password" value={credentials.password} onChange={handleChange} />
-            </div>
+            <div className={styles.LoginCredentials}>
 
-
-
-            <div className={styles.LoginBtnDiv}>
-              <button className={styles.LoginBtn}>Login</button>
-            </div>
-
-            <hr style={{ color: "gray", width: "16rem", margin: ".5rem 0" }} />
-
-            <div className={styles.LoginLinks}>
-              <div style={{ margin: "0 0 1rem 0" }}>
-                <h3>or Login with</h3>
+              <div className={styles.LoginEmail}>
+                <label htmlFor="email" className={styles.credTitle}>Email</label>
+                <input type="email" id="email" name="email" className={styles.LoginInp} placeholder="Enter your email" onChange={handleChange} value={credentials.email} />
               </div>
-              <div className={styles.LoginLink}>
-                <img src="/google.svg" className={styles.LoginSocLogo} />
-                <p>Login with Google</p>
-              </div>
-              <div className={styles.LoginLink}>
-                <img src="/facebook.svg" className={styles.LoginSocLogo} />
-                <p>Login with Facebook</p>
-              </div>
-              <div className={styles.LoginLink}>
-                <img src="/gmail.svg" className={styles.LoginSocLogo} />
-                <p>Login with Gmail</p>
-              </div>
-            </div>
 
-            {/* <div className={styles.LoginSocDiv}>
+              <div className={styles.LoginPass}>
+                <label htmlFor="password" className={styles.credTitle}>Password</label>
+                <input type="password" id="password" name="password" className={styles.LoginInp} placeholder="Enter your password" value={credentials.password} onChange={handleChange} />
+              </div>
+
+
+
+              <div className={styles.LoginBtnDiv}>
+                <button className={styles.LoginBtn} onClick={handleSubmit}>Login</button>
+              </div>
+
+              <hr style={{ color: "gray", width: "16rem", margin: ".5rem 0" }} />
+
+              <div className={styles.LoginLinks}>
+                <div style={{ margin: "0 0 1rem 0" }}>
+                  <h3>or Login with</h3>
+                </div>
+                <div className={styles.LoginLink}>
+                  <img src="/google.svg" className={styles.LoginSocLogo} />
+                  <p>Login with Google</p>
+                </div>
+                <div className={styles.LoginLink}>
+                  <img src="/facebook.svg" className={styles.LoginSocLogo} />
+                  <p>Login with Facebook</p>
+                </div>
+                <div className={styles.LoginLink}>
+                  <img src="/gmail.svg" className={styles.LoginSocLogo} />
+                  <p>Login with Gmail</p>
+                </div>
+              </div>
+
+              {/* <div className={styles.LoginSocDiv}>
             <a className={styles.LoginSocLink}>
               <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
@@ -138,9 +106,10 @@ const Login = ({ setKey, setUser }) => {
               </svg>
             </a>
           </div> */}
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </main>
   )
 }
