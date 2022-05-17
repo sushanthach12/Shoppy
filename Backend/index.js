@@ -14,6 +14,7 @@ app.use(express.json()) // if you want use req body , you have to use thsi
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/product', require('./routes/product'))
 app.use('/api/Order', require('./routes/order'))
+app.use('/api/cart', require('./routes/cart'))
 
 app.listen(port, () => {
     console.log(`Dystro backend is listening at ${port}`)

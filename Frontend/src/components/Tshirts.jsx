@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import '../styles/tshirts.css'
 import productContext from '../context/Product/ProductContext'
 
@@ -7,7 +7,6 @@ import productContext from '../context/Product/ProductContext'
 const Tshirts = () => {
   const context = useContext(productContext);
   const { tshirts, getProducts } = context;
-
 
   useEffect(() => {
     getProducts()

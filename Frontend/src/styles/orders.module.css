@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.OrderMain{
+    margin: 6rem auto;
+}
+
+.OrderHead{
+   text-align: center;
+   margin: 1rem auto;
+   font-size: 1.5rem;
+}
+
+.OrderItemDiv{
+    margin: .8rem auto;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.OrderItem{
+    margin: .8rem auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 5px 10px rgb(215, 213, 213);
+    border-radius: 20px;
+}
+
+.OrderItemImgDiv{
+    width: 15vw;
+}
+
+.OrderItemImg{
+    width: 50%;
+    height: 100%;
+    margin: 1rem auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.OrderItemContentDiv{
+    width: 45vw;
+    padding: .5rem 1rem;
+    border-left: 1px solid pink;
+    margin: .5rem 0;
+}
+
+.OrderItemTitle{
+    margin: .5rem 0;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+
+.OrderItemDesc{
+    margin: .5rem 0;
+    font-size: .9rem;
+}
+
+
+.OrderItemTrack{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0 .5rem 0;
+}
+
+.OrderItemOrderDate, .OrderItemrackOr{
+    font-size: small;
+    color: gray;
+}
+.OrderItemrackOr{
+    margin-right: 2.3rem;
+}
+
+.OrderCheckout{
+    flex: 0 1 auto;
+    margin: 0 .5rem;
+    padding: .7rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    border: none;
+    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}
+
+.OrderCheckout:hover{
+    cursor: pointer; 
+    background-position: right center; 
+}
