@@ -8,16 +8,13 @@ import userContext from '../context/User/UserContext'
 import LoadingBar from 'react-top-loading-bar'
 
 
-const Navbar = ({ user, setUser, setKey}) => {
+const Navbar = ({ user, setUser, setKey }) => {
     const context = useContext(userContext);
     const { getUser } = context;
 
     const [username, setUsername] = useState("")
     const [progress, setProgress] = useState(0)
-    const [isLoading, setIsLoading] = useState(Math.random())
 
-
-    let loc = useLocation()
 
     const handleLogout = () => {
         localStorage.removeItem('token')
@@ -31,21 +28,25 @@ const Navbar = ({ user, setUser, setKey}) => {
             setUsername(res)
         }
         GetUser()
-        setProgress(30)
-        setIsLoading(Math.random())
-        setProgress(60)
-        setProgress(100)
     }, [])
+
+    let loc = useLocation()
+    useEffect(() => {
+        setProgress(100)
+    }, [loc.pathname])
+    
 
 
     return (
         <>
-            
-            {isLoading && <LoadingBar
+            <LoadingBar
                 color='#f11946'
-                height={3}
                 progress={progress}
-            />}
+                height={3}
+                waitingTime={500}
+                onLoaderFinished={() => setProgress(0)}
+            />
+
             <div>
                 <header className={styles.navbar}>
                     <div className={styles.nav}>

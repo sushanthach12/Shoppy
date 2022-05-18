@@ -38,7 +38,7 @@ const Slug = () => {
 			<div className={styles.proDetail}>
 				<div>
 					<h2 className={styles.proPreHead}>Dystro</h2>
-					<h1 className={styles.proTitle}>{product.title}</h1>
+					<h1 className={styles.proTitle}>{product.title} ({size}/{color})</h1>
 
 
 					<div className={styles.proReview}>
@@ -107,7 +107,7 @@ const Slug = () => {
 								<select className={styles.select}>
 									{sizes.map((s) => {
 										return (
-											Object.keys(variants).includes(color) && Object.keys(variants[color]).includes(`${s}`) && <option key={s} value={s} onClick={handleClickSize}>{s}</option>
+											Object.keys(variants).includes(color) && Object.keys(variants[color]).includes(`${s}`) && <option value={s} onClick={handleClickSize}>{s}</option>
 										)
 									})}
 

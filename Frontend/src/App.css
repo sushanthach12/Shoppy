@@ -16,6 +16,7 @@ html::-webkit-scrollbar {
 
 .container{
     margin-top: 4.2rem;
+    width: 100vw;
     /* background-color: aqua; */
 }
 

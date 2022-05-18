@@ -1,6 +1,6 @@
-import { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useRoutes } from "react-router-dom";
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Tshirts from './components/Tshirts'
@@ -20,21 +20,17 @@ import OrderItem from './product/OrderItem';
 import UserState from './context/User/UserState';
 
 
-
 function App() {
   const [user, setUser] = useState({ loggedIn: false })
   const [Key, setKey] = useState(Math.random)
 
-
-
   return (
     <>
       <ProductState>
-
         <Router >
           <UserState >
             {Key && <Navbar key={Key} setUser={setUser} setKey={setKey} user={user} />}
-
+            
             <div className="container">
 
               <Routes >
