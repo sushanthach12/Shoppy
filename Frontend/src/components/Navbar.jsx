@@ -79,7 +79,7 @@ const Navbar = ({ user, setUser, setKey}) => {
                                     <div className={styles.accDropcontent} id="accDrop">
                                         <Link to="/orders" className={styles.navLink} >Your Orders</Link>
                                         <Link to="/user" className={styles.navLink} >Your Account</Link>
-                                        <Link to="/cart" className={styles.navLink} >Cart</Link>
+                                        <Link to="/cart" className={styles.navLink} >Your Cart</Link>
                                         <Link to={"/login"}><button className={styles.btn} onClick={() => { handleLogout() }}>Logout</button></Link>
                                     </div>
                                 </div>

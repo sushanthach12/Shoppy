@@ -7,7 +7,7 @@ const Cart = () => {
   return (
 
     <section className={styles.CartMain}>
-      <h1 className={styles.CartHead}>Your Cart</h1>
+      <h1 className={styles.CartHead}>Shopping Cart</h1>
       <hr className='hr' />
       <div className={styles.CartItemDiv}>
         <div className={styles.CartItem}>
@@ -17,15 +17,148 @@ const Cart = () => {
 
           <div className={styles.CartItemContentDiv}>
             <h2 className={styles.CartItemTitle}>Shooting Stars</h2>
-            <p className={styles.CartItemDesc}>Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-            <div className={styles.CartItemTrack}>
+            <p className={styles.CartItemStatus}>in stock or not</p>
+            <p className={styles.CartItemSize}>Size :</p>
+            <p className={styles.CartItemColor}>Color :</p>
+
+            {/* <div className={styles.CartItemTrack}>
               <p className={styles.CartItemOrderDate}>Ordered Date</p>
               <Link to={"/cart/cartitem"}><p className={styles.CartItemrackOr}>Track your order <IoIosArrowDroprightCircle /></p></Link>
+            </div> */}
+
+            <div className={styles.CartItembottom}>
+              <div className={styles.sizeOption}>
+                <span className={styles.CartItemQty}>Qty : </span>
+
+                <select className={styles.select}>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+
+              </div>
+              <div className={styles.CartItemOptions}>
+                <button className={styles.CartDltBtn}>Delete</button>
+              </div>
             </div>
+
           </div>
+
+
+        </div>
+        <div className={styles.CartItem}>
+          <div className={styles.CartItemImgDiv}>
+            <img src="https://m.media-amazon.com/images/I/61bDoqhvEPL._UX679_.jpg" alt="ecommerce" className={styles.CartItemImg} />
+          </div>
+
+          <div className={styles.CartItemContentDiv}>
+            <h2 className={styles.CartItemTitle}>Shooting Stars</h2>
+            <p className={styles.CartItemStatus}>in stock or not</p>
+            <p className={styles.CartItemSize}>Size :</p>
+            <p className={styles.CartItemColor}>Color :</p>
+
+            {/* <div className={styles.CartItemTrack}>
+              <p className={styles.CartItemOrderDate}>Ordered Date</p>
+              <Link to={"/cart/cartitem"}><p className={styles.CartItemrackOr}>Track your order <IoIosArrowDroprightCircle /></p></Link>
+            </div> */}
+
+            <div className={styles.CartItembottom}>
+              <div className={styles.sizeOption}>
+                <span className={styles.CartItemQty}>Qty : </span>
+
+                <select className={styles.select}>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+
+              </div>
+              <div className={styles.CartItemOptions}>
+                <button className={styles.CartDltBtn}>Delete</button>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+        <div className={styles.CartItem}>
+          <div className={styles.CartItemImgDiv}>
+            <img src="https://m.media-amazon.com/images/I/61bDoqhvEPL._UX679_.jpg" alt="ecommerce" className={styles.CartItemImg} />
+          </div>
+
+          <div className={styles.CartItemContentDiv}>
+            <h2 className={styles.CartItemTitle}>Shooting Stars</h2>
+            <p className={styles.CartItemStatus}>in stock or not</p>
+            <p className={styles.CartItemSize}>Size :</p>
+            <p className={styles.CartItemColor}>Color :</p>
+
+            {/* <div className={styles.CartItemTrack}>
+              <p className={styles.CartItemOrderDate}>Ordered Date</p>
+              <Link to={"/cart/cartitem"}><p className={styles.CartItemrackOr}>Track your order <IoIosArrowDroprightCircle /></p></Link>
+            </div> */}
+
+            <div className={styles.CartItembottom}>
+              <div className={styles.sizeOption}>
+                <span className={styles.CartItemQty}>Qty : </span>
+
+                <select className={styles.select}>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+
+              </div>
+              <div className={styles.CartItemOptions}>
+                <button className={styles.CartDltBtn}>Delete</button>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+        <div className={styles.CartItem}>
+          <div className={styles.CartItemImgDiv}>
+            <img src="https://m.media-amazon.com/images/I/61bDoqhvEPL._UX679_.jpg" alt="ecommerce" className={styles.CartItemImg} />
+          </div>
+
+          <div className={styles.CartItemContentDiv}>
+            <h2 className={styles.CartItemTitle}>Shooting Stars</h2>
+            <p className={styles.CartItemStatus}>in stock or not</p>
+            <p className={styles.CartItemSize}>Size :</p>
+            <p className={styles.CartItemColor}>Color :</p>
+
+            {/* <div className={styles.CartItemTrack}>
+              <p className={styles.CartItemOrderDate}>Ordered Date</p>
+              <Link to={"/cart/cartitem"}><p className={styles.CartItemrackOr}>Track your order <IoIosArrowDroprightCircle /></p></Link>
+            </div> */}
+
+            <div className={styles.CartItembottom}>
+              <div className={styles.sizeOption}>
+                <span className={styles.CartItemQty}>Qty : </span>
+
+                <select className={styles.select}>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+
+              </div>
+              <div className={styles.CartItemOptions}>
+                <button className={styles.CartDltBtn}>Delete</button>
+              </div>
+            </div>
+
+          </div>
+
+
         </div>
 
-        <button className={styles.CartCheckout}>Checkout</button>
+      </div>
+      <div className={styles.CartCheckout}>
+
+        <button className={styles.CartCheckoutBtn}>Checkout</button>
       </div>
     </section>
   )
