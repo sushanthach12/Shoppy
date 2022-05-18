@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import productContext from '../context/Product/ProductContext'
 import styles from '../styles/slug.module.css'
 
@@ -8,27 +8,30 @@ const Slug = () => {
 	const context = useContext(productContext);
 	const { product, variants, getProduct } = context;
 	const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
-	const [color, setColor] = useState(product.color)
-	const [size, setSize] = useState(product.size)
 
 	const { slug } = useParams();
+	let navigate = useNavigate()
 
 	useEffect(() => {
 		getProduct(slug)
-		// eslint-disable-next-line 
-	}, [])
+		// eslint-disable-next-line
+	})
 
+	const [color, setColor] = useState(product.color)
+	const [size, setSize] = useState(product.size)
 
-	const handleClickColor = (e) => {
-		setColor(e.target.value)
-		setSize(size)
+	const handleClickColor = (newColor) => {
+		setColor(newColor)
 	}
-	const handleClickSize = (e) => {
-		setSize(e.target.value)
-		setColor(color)
+	const handleClickSize = (newSize) => {
+		setSize(newSize)
 	}
 
-	
+	const refreshVariant = async(newColor, newSize) => {
+		let url = `/product/${variants[newColor][newSize]['slug']}`
+		// navigate(url)
+		console.log(newColor, newSize);
+	}
 
 	return (
 		<section className={styles.slugSec}>
@@ -38,7 +41,7 @@ const Slug = () => {
 			<div className={styles.proDetail}>
 				<div>
 					<h2 className={styles.proPreHead}>Dystro</h2>
-					<h1 className={styles.proTitle}>{product.title} ({size}/{color})</h1>
+					<h1 className={styles.proTitle}>{product.title} ({!size ? product.size : size}/{!color ? product.color : color})</h1>
 
 
 					<div className={styles.proReview}>
@@ -86,10 +89,10 @@ const Slug = () => {
 
 					<div className={styles.proVariants}>
 						<span className="mr-3">Color</span>
-
 						<div className={styles.varColor}>
 							<div className={styles.sizeOption}>
-								<select className={styles.select}>
+								<select aria-selected={product.color} onChange={(e) => { refreshVariant(color, e.target.value) }} className=
+									{styles.select}>
 									{Object.keys(variants).map((c) => {
 										return (
 											<option key={c} value={c} onClick={handleClickColor}>{c}</option>
@@ -104,10 +107,10 @@ const Slug = () => {
 						<div className={styles.varSize}>
 							<span className="mr-3">Size</span>
 							<div className={styles.sizeOption}>
-								<select className={styles.select}>
+								<select defaultValue={product.size} onChange={(e) => { refreshVariant(color, e.target.value) }} className={styles.select}>
 									{sizes.map((s) => {
 										return (
-											Object.keys(variants).includes(color) && Object.keys(variants[color]).includes(`${s}`) && <option value={s} onClick={handleClickSize}>{s}</option>
+											Object.keys(variants).includes(color) && Object.keys(variants[color]).includes(`${s}`) && <option key={s} value={s} onClick={(e)=>{handleClickSize(e.target.value)}}>{s}</option>
 										)
 									})}
 
