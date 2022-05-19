@@ -32,18 +32,20 @@ const Navbar = ({ user, setUser, setKey }) => {
 
     let loc = useLocation()
     useEffect(() => {
+        setProgress(30)
+        setProgress(60)
         setProgress(100)
     }, [loc.pathname])
-    
+
 
 
     return (
         <>
             <LoadingBar
-                color='#f11946'
+                color='linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,0,0,1) 0%, rgba(240,0,0,1) 100%, rgba(0,212,255,1) 100%)'
                 progress={progress}
                 height={3}
-                waitingTime={500}
+                waitingTime={800}
                 onLoaderFinished={() => setProgress(0)}
             />
 
@@ -93,6 +95,7 @@ const Navbar = ({ user, setUser, setKey }) => {
 
                 </header >
             </div >
+
         </>
     )
 }

@@ -5,6 +5,7 @@ import styles from '../styles/slug.module.css'
 
 const Slug = () => {
 
+
 	const context = useContext(productContext);
 	const { product, variants, getProduct } = context;
 	const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
@@ -20,17 +21,16 @@ const Slug = () => {
 	const [color, setColor] = useState(product.color)
 	const [size, setSize] = useState(product.size)
 
-	const handleClickColor = (newColor) => {
-		setColor(newColor)
+	const handleClickColor = (e) => {
+		setColor(e.target.value)
 	}
-	const handleClickSize = (newSize) => {
-		setSize(newSize)
+	const handleClickSize = (e) => {
+		setSize(e.target.value)
 	}
 
-	const refreshVariant = async(newColor, newSize) => {
-		let url = `/product/${variants[newColor][newSize]['slug']}`
-		// navigate(url)
-		console.log(newColor, newSize);
+	const refreshVariant = async (newColor, newSize) => {
+		let url = `/product/${variants[newColor][newSize].slug}`
+		navigate(url)
 	}
 
 	return (
@@ -41,7 +41,7 @@ const Slug = () => {
 			<div className={styles.proDetail}>
 				<div>
 					<h2 className={styles.proPreHead}>Dystro</h2>
-					<h1 className={styles.proTitle}>{product.title} ({!size ? product.size : size}/{!color ? product.color : color})</h1>
+					<h1 className={styles.proTitle}>{product.title} ({product.size}/{product.color})</h1>
 
 
 					<div className={styles.proReview}>
@@ -91,7 +91,7 @@ const Slug = () => {
 						<span className="mr-3">Color</span>
 						<div className={styles.varColor}>
 							<div className={styles.sizeOption}>
-								<select aria-selected={product.color} onChange={(e) => { refreshVariant(color, e.target.value) }} className=
+								<select aria-selected={product.color} className=
 									{styles.select}>
 									{Object.keys(variants).map((c) => {
 										return (
@@ -107,10 +107,10 @@ const Slug = () => {
 						<div className={styles.varSize}>
 							<span className="mr-3">Size</span>
 							<div className={styles.sizeOption}>
-								<select defaultValue={product.size} onChange={(e) => { refreshVariant(color, e.target.value) }} className={styles.select}>
+								<select onClickCapture={(e) => { refreshVariant(color, e.target.value) }} className={styles.select}>
 									{sizes.map((s) => {
 										return (
-											Object.keys(variants).includes(color) && Object.keys(variants[color]).includes(`${s}`) && <option key={s} value={s} onClick={(e)=>{handleClickSize(e.target.value)}}>{s}</option>
+											Object.keys(variants).includes(color) && Object.keys(variants[color]).includes(`${s}`) && <option key={s} value={s} onClick={handleClickSize}>{s}</option>
 										)
 									})}
 
@@ -125,11 +125,12 @@ const Slug = () => {
 					<hr style={{ width: "inherit", margin: "0 auto", color: "rgb(175, 168, 168)" }} />
 
 					<div className={styles.proPriceBuy}>
-						<p className={styles.proPrice}>₹{product.price}</p>
+						{ (product.availableQty <= 0)? <p className={styles.Ofs}>Out of Stock!</p>:
+						<p className={styles.proPrice}>₹{product.price}</p>}
 						<div className={styles.CheckBuyBtn}>
 
-							<button className={styles.proBuybtn}>Buy Now</button>
-							<button className={styles.proBuybtn}>Add To Cart</button>
+							<button disabled={product.availableQty<=0} className={styles.proBuybtn}>Buy Now</button>
+							<button disabled={product.availableQty<=0} className={styles.proBuybtn}>Add To Cart</button>
 						</div>
 					</div>
 

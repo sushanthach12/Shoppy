@@ -35,7 +35,7 @@ const Hoodies = () => {
                       <div className="sizes">
                         {(hoodies[item].size).map(s => {
                           return (
-                            <span className="item-size">{s}</span>
+                            <span className="item-size" key={s}>{s}</span>
                           )
                         })}
                       </div>

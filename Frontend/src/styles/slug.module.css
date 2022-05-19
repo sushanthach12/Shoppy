@@ -10,7 +10,8 @@
 .Imgcontainer {
     width: 40vw;
 }
-.proIMG{
+
+.proIMG {
     margin: 0 3rem;
 }
 
@@ -104,7 +105,7 @@
     border: none;
 }
 
-.proColor:focus{
+.proColor:focus {
     border: 1px solid black;
 }
 
@@ -138,7 +139,7 @@
     margin: 2rem 0;
 }
 
-.CheckBuyBtn{
+.CheckBuyBtn {
     display: flex;
     margin: 0;
     flex-wrap: wrap;
@@ -149,6 +150,7 @@
 
 .proBuybtn {
     flex: 0 1 auto;
+    cursor: pointer;
     margin: 0 .5rem;
     padding: .7rem;
     text-align: center;
@@ -164,13 +166,20 @@
     background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
 }
 
-.proBuybtn:hover {
-    cursor: pointer; 
-    background-position: right center; 
+.proBuybtn:hover{
+    transform: translateY(-1px);
+}
+.proBuybtn:disabled{
+    opacity: 0.5;
+    transform: none;
 }
 
-.proPrice{
+.proPrice,.Ofs {
     font-size: x-large;
     font-weight: bold;
     letter-spacing: 2px;
+}
+
+.Ofs{
+    color: red;
 }
