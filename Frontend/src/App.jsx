@@ -24,12 +24,15 @@ function App() {
   const [user, setUser] = useState({ loggedIn: false })
   const [Key, setKey] = useState(Math.random)
 
+  // For sideCart navabar
+  const [toggle, setToggle] = useState(false)
+
   return (
     <>
       <ProductState>
         <Router >
           <UserState >
-            {Key && <Navbar key={Key} setUser={setUser} setKey={setKey} user={user} />}
+            {Key && <Navbar key={Key} setUser={setUser} setKey={setKey} user={user} toggle={toggle} setToggle={setToggle}/>}
             
             <div className="container">
 
@@ -44,7 +47,7 @@ function App() {
                 <Route exact path='/login' element={<Login setKey={setKey} setUser={setUser} />}></Route>
                 <Route exact path='/signup' element={<Signup />}></Route>
 
-                <Route path='/product/:slug' element={<Slug />} />
+                <Route path='/product/:slug' element={<Slug toggle={toggle} setToggle={setToggle}/>} />
                 <Route exact path='/cart' element={<Cart />}></Route>
                 <Route exact path='/cart/cartitem' element={<CartItem />}></Route>
                 <Route exact path='/orders' element={<Orders />}></Route>

@@ -4,11 +4,12 @@ import { Link, useLocation } from 'react-router-dom'
 import { RiAccountCircleFill } from 'react-icons/ri'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { MdDelete } from 'react-icons/md'
 import userContext from '../context/User/UserContext'
 import LoadingBar from 'react-top-loading-bar'
 
 
-const Navbar = ({ user, setUser, setKey }) => {
+const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
     const context = useContext(userContext);
     const { getUser } = context;
 
@@ -93,7 +94,42 @@ const Navbar = ({ user, setUser, setKey }) => {
                     </div>
 
 
+
+
+                    <div className={styles.SideCart} style={{display: `${toggle?"block":"none"}`}}>
+                        <div className={styles.SideCartItemDiv}>
+                            <h4 className={styles.SideCartSubtotal}>Subtotal :₹5000 </h4>
+                            <ol>
+                                <li>
+                                    <div className={styles.SideCartItem}>
+                                        <p>Item title</p>
+                                        <div className={styles.AddDltItem}>
+                                            <button className={styles.SideCartBtn}>-</button>
+                                            <span className={styles.SideCartItemQty}>1</span>
+                                            <button className={styles.SideCartBtn}>+</button>
+                                            <span className={styles.SideCartDltBtn}><MdDelete /></span>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className={styles.SideCartItem}>
+                                        <p>Item title</p>
+                                        <div className={styles.AddDltItem}>
+                                            <button className={styles.SideCartBtn}>-</button>
+                                            <span className={styles.SideCartItemQty}>1</span>
+                                            <button className={styles.SideCartBtn}>+</button>
+                                            <span className={styles.SideCartDltBtn}><MdDelete /></span>
+
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
+
+                        </div>
+                    </div>
                 </header >
+
             </div >
 
         </>

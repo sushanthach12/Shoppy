@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import productContext from '../context/Product/ProductContext'
 import styles from '../styles/slug.module.css'
 
-const Slug = () => {
+const Slug = ({toggle, setToggle}) => {
 
 
 	const context = useContext(productContext);
@@ -26,6 +26,14 @@ const Slug = () => {
 	}
 	const handleClickSize = (e) => {
 		setSize(e.target.value)
+	}
+
+
+	const handleAddToCart = () => {
+		setToggle(true)
+		setTimeout(() => {
+			setToggle(false)
+		}, 3000);
 	}
 
 	const refreshVariant = async (newColor, newSize) => {
@@ -130,7 +138,7 @@ const Slug = () => {
 						<div className={styles.CheckBuyBtn}>
 
 							<button disabled={product.availableQty<=0} className={styles.proBuybtn}>Buy Now</button>
-							<button disabled={product.availableQty<=0} className={styles.proBuybtn}>Add To Cart</button>
+							<button disabled={product.availableQty<=0} className={styles.proBuybtn} onClick={handleAddToCart} >Add To Cart</button>
 						</div>
 					</div>
 
