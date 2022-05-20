@@ -16,7 +16,7 @@ const Slug = ({toggle, setToggle}) => {
 	useEffect(() => {
 		getProduct(slug)
 		// eslint-disable-next-line
-	})
+	},[])
 
 	const [color, setColor] = useState(product.color)
 	const [size, setSize] = useState(product.size)
@@ -27,6 +27,8 @@ const Slug = ({toggle, setToggle}) => {
 	const handleClickSize = (e) => {
 		setSize(e.target.value)
 	}
+
+	console.log(variants);
 
 
 	const handleAddToCart = () => {

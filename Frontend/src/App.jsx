@@ -32,8 +32,8 @@ function App() {
       <ProductState>
         <Router >
           <UserState >
-            {Key && <Navbar key={Key} setUser={setUser} setKey={setKey} user={user} toggle={toggle} setToggle={setToggle}/>}
-            
+            {Key && <Navbar key={Key} setUser={setUser} setKey={setKey} user={user} toggle={toggle} setToggle={setToggle} />}
+
             <div className="container">
 
               <Routes >
@@ -47,12 +47,13 @@ function App() {
                 <Route exact path='/login' element={<Login setKey={setKey} setUser={setUser} />}></Route>
                 <Route exact path='/signup' element={<Signup />}></Route>
 
-                <Route path='/product/:slug' element={<Slug toggle={toggle} setToggle={setToggle}/>} />
+                <Route path='/product/:slug' element={<Slug toggle={toggle} setToggle={setToggle} />} />
                 <Route exact path='/cart' element={<Cart />}></Route>
                 <Route exact path='/cart/cartitem' element={<CartItem />}></Route>
                 <Route exact path='/orders' element={<Orders />}></Route>
                 <Route exact path='/orders/orderitem' element={<OrderItem />}></Route>
               </Routes>
+
             </div>
             <Footer />
           </UserState>
