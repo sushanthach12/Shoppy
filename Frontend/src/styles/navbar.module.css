@@ -37,6 +37,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-right: 1rem;
 }
 
 
@@ -61,6 +62,11 @@
     border-radius: 5px;
 }
 
+.links {
+    padding-right: 1rem;
+}
+
+
 .navLink:hover {
     color: rgb(229, 173, 173);
 }
@@ -70,6 +76,8 @@
     flex-direction: row;
     align-items: center;
     flex-wrap: nowrap;
+    border-left: 2px solid pink;
+    padding: 0 1rem;
 }
 
 .userInfo {
@@ -167,7 +175,7 @@
     padding-top: .5rem;
     background-color: #f1f1f1;
     min-width: 10rem;
-    right: 10%;
+    right: 7%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 3px;
@@ -194,6 +202,14 @@ input[type=checkbox] {
     left: -9999px;
 }
 
+.navCart {
+    margin-right: 8px;
+}
+
+.navCartIcon:hover {
+    cursor: pointer;
+}
+
 .ACCIMG:hover {
     cursor: pointer;
 }
@@ -211,6 +227,16 @@ input[type=checkbox] {
     display: block;
 }
 
+@keyframes SlideFromRight {
+    from {
+        right:-100%;
+    }
+
+    to {
+        right: 0%;
+    }
+}
+
 .SideCart {
     background-color: rgb(255, 255, 255);
     height: 100vh;
@@ -220,8 +246,8 @@ input[type=checkbox] {
     position: absolute;
     z-index: 1000;
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    animation: .5s SlideFromRight;
 }
-
 .SideCartItemDiv {
     margin: 2rem 2rem;
     display: flex;
@@ -230,12 +256,17 @@ input[type=checkbox] {
     align-items: flex-start;
 }
 
-.SideCartSubtotal{
-    margin-left:-1rem;
+.SideCartSubtotal {
+    margin-left: -1rem;
     font-size: medium;
 }
 
-.SideCartItem{
+.SideBarClose{
+    margin: 1rem .5rem;
+    color: pink;
+}
+
+.SideCartItem {
     width: 100%;
     height: 3.5rem;
     margin-top: 1rem;
@@ -244,29 +275,31 @@ input[type=checkbox] {
     justify-content: space-evenly;
 }
 
-.AddDltItem{
+.AddDltItem {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.SideCartBtn{
+.SideCartBtn {
     width: 2em;
     height: 1.5em;
     text-align: center;
     /* margin: 0 .5rem; */
 }
 
-.SideCartDltBtn{
+.SideCartDltBtn {
     margin-left: 1rem;
     width: 2em;
 }
 
-.SideCartItemQty{
+.SideCartItemQty {
     background-color: rgb(218, 216, 216);
     padding: 0 1em;
     font-size: 15px;
 }
+
+
 
 @media screen and (max-width: 700px) and (min-width: 500px) {
 
