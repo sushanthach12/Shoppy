@@ -13,12 +13,13 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Orders from './components/Orders';
 import Cart from './components/Cart';
-import ProductState from './context/Product/ProductState';
 import Slug from './product/Slug';
 import CartItem from './product/CartItem';
 import OrderItem from './product/OrderItem';
-import UserState from './context/User/UserState';
 
+import UserState from './context/User/UserState';
+import ProductState from './context/Product/ProductState'
+import CartState from './context/Cart/CartState';
 
 function App() {
   const [user, setUser] = useState({ loggedIn: false })
@@ -32,30 +33,34 @@ function App() {
       <ProductState>
         <Router >
           <UserState >
-            {Key && <Navbar key={Key} setUser={setUser} setKey={setKey} user={user} toggle={toggle} setToggle={setToggle} />}
+            <CartState>
+              {Key && <Navbar key={Key} setUser={setUser} setKey={setKey} user={user} toggle={toggle} setToggle={setToggle} />}
 
-            <div className="container">
+              <div className="container">
 
-              <Routes >
-                <Route exact path='/' element={<Home />}></Route>
-                <Route exact path='/home' element={<Home />}></Route>
-                <Route exact path='/about' element={<About />}></Route>
-                <Route exact path='/tshirts' element={<Tshirts />}></Route>
-                <Route exact path='/pants' element={<Pants />}></Route>
-                <Route exact path='/hoodies' element={<Hoodies />}></Route>
-                <Route exact path='/user' element={<User />}></Route>
-                <Route exact path='/login' element={<Login setKey={setKey} setUser={setUser} />}></Route>
-                <Route exact path='/signup' element={<Signup />}></Route>
+                <Routes >
+                  <Route exact path='/' element={<Home />}></Route>
+                  <Route exact path='/home' element={<Home />}></Route>
+                  <Route exact path='/about' element={<About />}></Route>
+                  <Route exact path='/tshirts' element={<Tshirts />}></Route>
+                  <Route exact path='/pants' element={<Pants />}></Route>
+                  <Route exact path='/hoodies' element={<Hoodies />}></Route>
+                  <Route exact path='/login' element={<Login setKey={setKey} setUser={setUser} />}></Route>
+                  <Route exact path='/signup' element={<Signup />}></Route>
 
-                <Route path='/product/:slug' element={<Slug toggle={toggle} setToggle={setToggle} />} />
-                <Route exact path='/cart' element={<Cart />}></Route>
-                <Route exact path='/cart/cartitem' element={<CartItem />}></Route>
-                <Route exact path='/orders' element={<Orders />}></Route>
-                <Route exact path='/orders/orderitem' element={<OrderItem />}></Route>
-              </Routes>
 
-            </div>
-            <Footer />
+                  <Route path='/product/:slug' element={<Slug toggle={toggle} setToggle={setToggle} />} />
+                  <Route exact path='/user' element={<User />}></Route>
+                  <Route exact path='/cart' element={<Cart />}></Route>
+                  <Route exact path='/cart/cartitem' element={<CartItem />}></Route>
+                  <Route exact path='/orders' element={<Orders />}></Route>
+                  <Route exact path='/orders/orderitem' element={<OrderItem />}></Route>
+
+                </Routes>
+
+              </div>
+              <Footer />
+            </CartState>
           </UserState>
 
         </Router>

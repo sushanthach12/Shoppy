@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '../styles/cart.module.css'
+
 import { IoIosArrowDroprightCircle } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 
 const Cart = () => {
+
   return (
 
     <section className={styles.CartMain}>

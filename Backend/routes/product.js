@@ -105,7 +105,7 @@ router.post('/addproduct', async (req, res) => {
             availableQty: availableQty
         })
 
-        res.json({ "Success": true, "Product": product });
+        res.json({ "Success": true, "Product": product});
 
     } catch (error) {
         console.log(error.message);

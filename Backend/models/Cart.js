@@ -3,6 +3,10 @@ const { Schema } = mongoose;
 
 const CartSchema = new Schema({
 
+    user: {
+        type: mongoose.Schema.Types.ObjectId, // Which user is loggedin 
+		ref: 'user'
+    },
     title: {
         type: String,
         required: true
@@ -32,6 +36,5 @@ const CartSchema = new Schema({
 }, { timestamps: true })
 
 
-const Cart = mongoose.model('Cart', CartSchema);
 
-module.exports = Cart;
+module.exports = mongoose.model('Cart', CartSchema);

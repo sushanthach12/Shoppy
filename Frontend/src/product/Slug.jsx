@@ -1,13 +1,18 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import productContext from '../context/Product/ProductContext'
+import cartContext from '../context/Cart/CartContext'
 import styles from '../styles/slug.module.css'
 
 const Slug = ({toggle, setToggle}) => {
 
 
-	const context = useContext(productContext);
-	const { product, variants, getProduct } = context;
+	const procontext = useContext(productContext);
+	const { product, variants, getProduct } = procontext;
+
+	const Cartcontext = useContext(cartContext);
+	const { cartItems, AddToCart} = Cartcontext;
+
 	const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
 
 	const { slug } = useParams();
@@ -31,8 +36,11 @@ const Slug = ({toggle, setToggle}) => {
 	console.log(variants);
 
 
-	const handleAddToCart = () => {
+	const handleAddToCart = (title,slug, size,color, qty, amount) => {
 		setToggle(true)
+
+		AddToCart(title,slug, size,color, qty, amount)
+
 		setTimeout(() => {
 			setToggle(false)
 		}, 3000);
@@ -140,7 +148,7 @@ const Slug = ({toggle, setToggle}) => {
 						<div className={styles.CheckBuyBtn}>
 
 							<button disabled={product.availableQty<=0} className={styles.proBuybtn}>Buy Now</button>
-							<button disabled={product.availableQty<=0} className={styles.proBuybtn} onClick={handleAddToCart} >Add To Cart</button>
+							<button disabled={product.availableQty<=0} className={styles.proBuybtn} onClick={()=>{handleAddToCart(product.title,slug, size, color, 1,product.price)}} >Add To Cart</button>
 						</div>
 					</div>
 

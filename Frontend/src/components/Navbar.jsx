@@ -96,7 +96,7 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
 
 
 
-                    <div className={styles.SideCart} style={{display: `${toggle?"block":"none"}`}}>
+                    <div className={styles.SideCart} style={{display: `${toggle?"block":"none"}`}} >
                         <div className={styles.SideCartItemDiv}>
                             <h4 className={styles.SideCartSubtotal}>Subtotal :₹5000 </h4>
                             <ol>
