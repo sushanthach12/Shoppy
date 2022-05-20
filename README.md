@@ -15,7 +15,7 @@ Before Starting the app . Follow the below steps :
   After done with the above steps. Run the command given below in the terminal :
 
 ```sh
-$ yarn add
+$ yarn
 ```
 The Above command basically will install the node_modules (dependencies) required in-order to run the react-app.
 
