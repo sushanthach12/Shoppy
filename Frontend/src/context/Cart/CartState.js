@@ -6,7 +6,8 @@ const CartState = (props) => {
 
     const [cartItems, setCartItems] = useState({})
 
-    const AddToCart = async (title,image, slug, size, color, quantity, amount) => {
+    const AddToCart = async (title, slug, size, color, quantity, amount) => {
+        console.log(title, slug, size, color, quantity, amount );
 
         const res = await fetch(`${process.env.REACT_APP_HOST}/api/cart/addToCart`, {
             method: 'POST',
@@ -16,8 +17,7 @@ const CartState = (props) => {
             },
 
             body: JSON.stringify({ 
-                "title": title,
-                "image": image,
+                "title": title, 
                 "slug": slug, 
                 "size": size, 
                 "color": color, 
@@ -27,26 +27,11 @@ const CartState = (props) => {
 
         })
         const response = await res.json();
-    }
-    
-    const FetchCartItems = async () => {
-
-        const res = await fetch(`${process.env.REACT_APP_HOST}/api/cart/fetchcartItem`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'auth-token': localStorage.getItem('token')
-            }
-        })
-        const response = await res.json();
         console.log(response);
-        setCartItems(response.Cart)
-        setCartItems(response.Cart)
     }
-
 
     return (
-        <CartContext.Provider value={{ cartItems, AddToCart, FetchCartItems }}>
+        <CartContext.Provider value={{ cartItems, AddToCart }}>
             {props.children}
         </CartContext.Provider>
     )

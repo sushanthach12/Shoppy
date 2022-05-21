@@ -13,7 +13,6 @@ router.post('/addToCart', fetchuser, async (req, res) => {
         const cart = await Cart.create({
             user: req.user.id,
             title: req.body.title,
-            image: req.body.image,
             slug: req.body.slug,
             size: req.body.size,
             color: req.body.color,
@@ -36,7 +35,6 @@ router.post('/fetchcartItem', fetchuser, async (req, res) => {
 
         // Create a new PRoduct
         let CartItems = await Cart.find({ userId: req.user.id })
-    
         res.json({ "Success": true, "Cart": CartItems });
 
     } catch (error) {

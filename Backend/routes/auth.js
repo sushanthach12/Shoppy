@@ -5,7 +5,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config();
-const fetchuser = require('../middleware/fetchuser')
+const fetchuser = require('../middleware/fetchuser');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -44,17 +44,25 @@ router.post('/signup', [
         // Authenticate user
 
         const data = {
-            user : {
+            user: {
                 id: user.id
             }
         }
 
         const authToken = jwt.sign(data, JWT_SECRET);
 
-        res.status(202).json({ "Success": true, "authToken": authToken });
+        // const options = {
+        //     maxAge: 5000,
+        //     // expires works the same as the maxAge
+        //     expires: new Date('01 12 2021'),
+        //     httpOnly: true,
+        //     sameSite: 'lax'
+        // }
+        // res.cookie("jwt", authToken, options)
+        res.status(200).json({ "Success": true, "AuthToken": authToken });
 
     } catch (error) {
-        
+
         res.status(500).send("Internal Server error")
     }
 
@@ -75,16 +83,16 @@ router.post('/login', [
 
     try {
 
-        const {email, password} = req.body;
+        const { email, password } = req.body;
 
-        let user = await User.findOne({ email});
+        let user = await User.findOne({ email });
         if (!user) {
             return res.status(400).json({ error: "Please Login with correct credentials" })
         }
 
         const passCompare = await bcrypt.compare(password, user.password);
 
-        if(!passCompare){
+        if (!passCompare) {
             return res.status(400).json({ error: "Please Login with correct credentials" })
         }
 
@@ -94,7 +102,16 @@ router.post('/login', [
             }
         }
         const authToken = jwt.sign(data, JWT_SECRET);
-        res.status(200).json({ "Success": true, "authToken": authToken});
+
+        // const options = {
+        //     maxAge: 5000,
+        //     // expires works the same as the maxAge
+        //     expires: new Date('01 12 2021'),
+        //     httpOnly: true,
+        //     sameSite: 'lax'
+        // }
+        // res.cookie("jwt", authToken, options)
+        res.status(200).json({ "Success": true, 'AuthToken': authToken });
 
     } catch (error) {
         res.status(500).send("Internal Server error")
@@ -109,8 +126,29 @@ router.post('/getUser', fetchuser, async (req, res) => {
     try {
         const userID = req.user.id;
         const user = await User.findById(userID).select('-password');
-        res.send(user)
+        return res.send(user)
+    } catch (error) {
+        res.status(500).send("Internal Server error")
+    }
 
+});
+
+router.post('/checkuser', fetchuser, async (req, res) => {
+
+    try {
+        const token = req.cookies;
+        return res.json({ "Success": true, "token": token })
+    } catch (error) {
+        res.status(500).send("Internal Server error")
+    }
+
+});
+
+router.post('/logout', async (req, res) => {
+
+    try {
+        res.clearCookie()
+        res.status(200).json({ "Success": true, "token": token })
     } catch (error) {
         res.status(500).send("Internal Server error")
     }

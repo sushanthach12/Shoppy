@@ -4,9 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { RiAccountCircleFill } from 'react-icons/ri'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { FiShoppingCart } from 'react-icons/fi'
 import { MdDelete } from 'react-icons/md'
-import { ImCross } from 'react-icons/im'
 import userContext from '../context/User/UserContext'
 import LoadingBar from 'react-top-loading-bar'
 
@@ -40,9 +38,7 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
         setProgress(100)
     }, [loc.pathname])
 
-    const handleToggler = () => {
-        setToggle(!toggle)
-    }
+
 
     return (
         <>
@@ -77,12 +73,10 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
                                     </div>
                                 </div>
                             </div>
-                            {/* <hr style={{ height: "1.5rem", width: "0", margin: "0 1rem" }} /> */}
+                            <hr style={{ height: "1.5rem", width: "0", margin: "0 1rem" }} />
                             <div className={styles.navButton}>
-                                <label className={styles.navCart} onClick={handleToggler}><FiShoppingCart size={25} className={styles.navCartIcon} /></label>
                                 <div className={styles.accDrop}>
                                     <div className={styles.userInfo}>
-
                                         {((localStorage.getItem('token'))) ? <label className={styles.ACCIMG}><RiAccountCircleFill size={28} className={styles.navAccimg} /></label> : ""}
                                         {localStorage.getItem('token') && <p className={styles.username}>{username}</p>}
                                     </div>
@@ -102,8 +96,7 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
 
 
 
-                    <div className={styles.SideCart} style={{ display: `${toggle ? "block" : "none"}` }} >
-                        <ImCross className={styles.SideBarClose} onClick={handleToggler}/>
+                    <div className={styles.SideCart} style={{display: `${toggle?"block":"none"}`}} >
                         <div className={styles.SideCartItemDiv}>
                             <h4 className={styles.SideCartSubtotal}>Subtotal :₹5000 </h4>
                             <ol>

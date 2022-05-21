@@ -20,7 +20,6 @@ const Slug = ({toggle, setToggle}) => {
 
 	useEffect(() => {
 		getProduct(slug)
-	
 		// eslint-disable-next-line
 	},[])
 
@@ -41,6 +40,10 @@ const Slug = ({toggle, setToggle}) => {
 		setToggle(true)
 
 		AddToCart(title,slug, size,color, qty, amount)
+
+		setTimeout(() => {
+			setToggle(false)
+		}, 3000);
 	}
 
 	const refreshVariant = async (newColor, newSize) => {
@@ -145,7 +148,7 @@ const Slug = ({toggle, setToggle}) => {
 						<div className={styles.CheckBuyBtn}>
 
 							<button disabled={product.availableQty<=0} className={styles.proBuybtn}>Buy Now</button>
-							<button disabled={product.availableQty<=0} className={styles.proBuybtn} onClick={()=>{handleAddToCart(product.title, product.image,slug, size, color, 1,product.price)}} >Add To Cart</button>
+							<button disabled={product.availableQty<=0} className={styles.proBuybtn} onClick={()=>{handleAddToCart(product.title,slug, size, color, 1,product.price)}} >Add To Cart</button>
 						</div>
 					</div>
 

@@ -18,12 +18,11 @@ const UserState = (props) => {
         })
 
         const response = await res.json();
-
         if (response.Success) {
             setCredentials({ email: "", password: "" })
+            localStorage.setItem('token',response.AuthToken)
             setUser({ loggedIn: true })
             setKey(Math.random)
-            localStorage.setItem('token', response.authToken);
             toast.success('Logged-In Successfully!', {
                 position: "top-left",
                 autoClose: 1600,
@@ -47,7 +46,6 @@ const UserState = (props) => {
                 progress: undefined,
             });
         }
-
     }
 
     const handleSignup = async (credentials, setCredentials) => {
@@ -57,14 +55,14 @@ const UserState = (props) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ name: credentials.name ,email: credentials.email, password: credentials.password })
+            body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
         })
 
         const response = await res.json();
 
         if (response.Success) {
             setCredentials({ email: "", password: "" })
-            localStorage.setItem('token', response.authToken);
+            localStorage.setItem('token',response.AuthToken)
             toast.success('Logged-In Successfully!', {
                 position: "top-left",
                 autoClose: 1600,
@@ -92,26 +90,37 @@ const UserState = (props) => {
     }
 
     const getUser = async () => {
-        if (localStorage.getItem('token')) {
+        const token = localStorage.getItem('token')
+        const res = await fetch(`${process.env.REACT_APP_HOST}/api/auth/getUser`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'authToken': token
+            },
+        })
 
-            const res = await fetch(`${process.env.REACT_APP_HOST}/api/auth/getUser`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'auth-token': localStorage.getItem('token')
-                }
-            })
+        const response = await res.json();
 
-            const response = await res.json();
-            return response.name
-        }
+    }
 
+    const CheckUser = async () => {
+    
+        const res = await fetch(`${process.env.REACT_APP_HOST}/api/auth/checkuser`, {
+            method: 'POST',
+            credentials:'include',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        const response = await res.json();
+        console.log(response);
     }
 
 
 
     return (
-        <UserContext.Provider value={{ handleLogin, getUser, handleSignup }}>
+        <UserContext.Provider value={{ handleLogin, getUser, handleSignup, CheckUser }}>
             {props.children}
         </UserContext.Provider>
     )

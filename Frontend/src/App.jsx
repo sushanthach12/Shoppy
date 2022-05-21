@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, useRoutes } from "react-router-dom";
 import Navbar from './components/Navbar';
@@ -21,12 +21,16 @@ import UserState from './context/User/UserState';
 import ProductState from './context/Product/ProductState'
 import CartState from './context/Cart/CartState';
 
+
 function App() {
+
   const [user, setUser] = useState({ loggedIn: false })
   const [Key, setKey] = useState(Math.random)
 
   // For sideCart navabar
   const [toggle, setToggle] = useState(false)
+
+
 
   return (
     <>
