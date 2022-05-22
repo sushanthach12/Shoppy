@@ -16,13 +16,10 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
     const { getUser } = context;
 
     const Cartcontext = useContext(cartContext);
-    const { cartItems, FetchCart } = Cartcontext;
+    const { cartItems,subTotal, FetchCart } = Cartcontext;
 
     const [username, setUsername] = useState("")
     const [progress, setProgress] = useState(0)
-
-    const [qty, setQty] = useState(1)
-
 
     const handleLogout = () => {
         localStorage.removeItem('token')
@@ -36,7 +33,8 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
             setUsername(res)
         }
         GetUser()
-    }, [])
+        FetchCart()
+    }, [user])
 
     let loc = useLocation()
     useEffect(() => {
@@ -107,16 +105,16 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
                     <div className={styles.SideCart} style={{ display: `${toggle ? "block" : "none"}` }} >
                         
                         <div className={styles.SideCartItemDiv}>
-                            <h4 className={styles.SideCartSubtotal}>Subtotal :₹5000 </h4>
+                            <h4 className={styles.SideCartSubtotal}>Subtotal :₹{subTotal}</h4>
                             <ol>
-                                {cartItems.map((item) => {
+                                {Object.keys(cartItems).map((item) => {
                                     return (
-                                        <li className={styles.SideCartLi}>
+                                        <li className={styles.SideCartLi} key={item}>
                                             <div className={styles.SideCartItem}>
-                                                <p className={styles.SideCartItemtitle}>{item.title}</p>
-                                                <p className={styles.SideCartItemSize}>Size : {item.size}</p>
-                                                <p className={styles.SideCartItemColor}>Color : {item.color}</p>
-                                                <p className={styles.SideCartItemColor}>Qty : {item.quantity}</p>
+                                                <p className={styles.SideCartItemtitle}>{cartItems[item].title}</p>
+                                                <p className={styles.SideCartItemSize}>Size : {cartItems[item].size}</p>
+                                                <p className={styles.SideCartItemColor}>Color : {cartItems[item].color}</p>
+                                                <p className={styles.SideCartItemColor}>Qty : {cartItems[item].quantity}</p>
                                             </div>
                                         </li>
                                     )

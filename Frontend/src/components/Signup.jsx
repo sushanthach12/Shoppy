@@ -48,11 +48,11 @@ const Signup = () => {
 
             <div className={styles.LoginEmail}>
               <label htmlFor="name" className={styles.credTitle}>Name</label>
-              <input type="text" id="name" name="name" className={styles.LoginInp} placeholder="Enter your name" onChange={handleChange} value={credentials.name} />
+              <input type="text" id="name" name="name" className={styles.LoginInp} placeholder="Enter your name" value={credentials.name} onChange={handleChange }/>
             </div>
             <div className={styles.LoginEmail}>
               <label htmlFor="email" className={styles.credTitle}>Email</label>
-              <input type="email" id="email" name="email" className={styles.LoginInp} placeholder="Enter your email" onChange={handleChange} value={credentials.email} />
+              <input type="email" id="email" name="email" className={styles.LoginInp} placeholder="Enter your email"  value={credentials.email} onChange={handleChange}/>
             </div>
 
             <div className={styles.LoginPass}>

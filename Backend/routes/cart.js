@@ -6,36 +6,20 @@ const fetchuser = require('../middleware/fetchuser')
 
 router.post('/addToCart', fetchuser, async (req, res) => {
 
-
     try {
-        let itemFound = await Cart.findOne({ userId: req.user.id, "slug": req.body.slug })
 
-        let cart;
-
-        if(itemFound){
-            let CartItems = await Cart.find({ userId: req.user.id })
-            for (const item of CartItems) {
-                if (req.body.slug === item.slug) {
-                    cart = await Cart.findOneAndUpdate({ "slug": req.body.slug, $inc: { "quantity": req.body.quantity } })
-                }
-            }
-        }else{
-            cart = await Cart.create({
-                user: req.user.id,
-                title: req.body.title,
-                slug: req.body.slug,
-                size: req.body.size,
-                color: req.body.color,
-                quantity: req.body.quantity,
-                amount: req.body.amount
-            })    
-        }
-
-        
-       
+        const cart = await Cart.create({
+            user: req.user.id,
+            title: req.body.title,
+            slug: req.body.slug,
+            size: req.body.size,
+            color: req.body.color,
+            quantity: req.body.quantity,
+            amount: req.body.amount
+        })
 
 
-        res.json({ "Success": true, "Cart": cart });
+        return res.json({ "Success": true, "Cart": cart });
 
     } catch (error) {
         console.log(error.message);
@@ -45,10 +29,22 @@ router.post('/addToCart', fetchuser, async (req, res) => {
 })
 
 router.post('/fetchcart', fetchuser, async (req, res) => {
-
     try {
-        const cart = await Cart.find({ userId: req.user.id })
-        res.json({ "Success": true, "Cart": cart });
+        const cart = await Cart.find({ user: req.user.id })
+        let subTotal = 0;
+        let CartItems = {};
+        for (let item of cart) {
+            subTotal = subTotal + (item.amount * item.quantity)
+
+            if(Object.keys(CartItems).includes(item.slug)){
+                CartItems[item.slug].quantity += item.quantity
+            }else{
+                CartItems[item.slug] = {}
+                CartItems[item.slug] = JSON.parse(JSON.stringify(item))
+            }
+        }
+        
+        return res.json({ "Success": true, "Cart": CartItems, "SubTotal": subTotal });
 
     } catch (error) {
         console.log(error.message);
@@ -60,11 +56,9 @@ router.post('/fetchcart', fetchuser, async (req, res) => {
 router.post('/removeitem', async (req, res) => {
 
     try {
-
-        // Create a new PRoduct
         let cart = await Cart.findOneAndDelete({ "slug": req.body.slug })
 
-        res.json({ "Success": true, "Cart": cart });
+        return res.json({ "Success": true, "Cart": cart });
 
     } catch (error) {
         console.log(error.message);

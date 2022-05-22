@@ -5,7 +5,8 @@ import { toast } from 'react-toastify';
 
 const CartState = (props) => {
 
-    const [cartItems, setCartItems] = useState([])
+    const [cartItems, setCartItems] = useState({})
+    const [subTotal, setSubTotal] = useState(0)
 
 
     const AddToCart = async (title, slug, size, color, quantity, amount) => {
@@ -31,16 +32,21 @@ const CartState = (props) => {
         FetchCart()
     }
     const FetchCart = async () => {
+        const token = localStorage.getItem('token')
+        if (token) {
 
-        const res = await fetch(`${process.env.REACT_APP_HOST}/api/cart/fetchcart`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'authToken': localStorage.getItem('token')
-            },
-        })
-        const response = await res.json();
-        setCartItems(response.Cart)
+            const res = await fetch(`${process.env.REACT_APP_HOST}/api/cart/fetchcart`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authToken': token
+                },
+            })
+            const response = await res.json();
+            setCartItems(response.Cart)
+            setSubTotal(response.SubTotal)
+            console.log(cartItems);
+        }
     }
 
     const RemoveFromCart = async (slug) => {
@@ -51,7 +57,7 @@ const CartState = (props) => {
                 'Content-Type': 'application/json',
                 'authToken': localStorage.getItem('token')
             },
-            body : JSON.stringify({"slug":slug})
+            body: JSON.stringify({ "slug": slug })
         })
         const response = await res.json();
         if (response.Success) {
@@ -70,7 +76,7 @@ const CartState = (props) => {
     }
 
     return (
-        <CartContext.Provider value={{ cartItems, AddToCart, FetchCart, RemoveFromCart }}>
+        <CartContext.Provider value={{ cartItems,subTotal, AddToCart, FetchCart, RemoveFromCart }}>
             {props.children}
         </CartContext.Provider>
     )
