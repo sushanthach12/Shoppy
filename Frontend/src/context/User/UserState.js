@@ -95,12 +95,13 @@ const UserState = (props) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'authToken': token
+                'authToken': `${token}`
             },
         })
 
         const response = await res.json();
-
+        return response.name
+        
     }
 
     const CheckUser = async () => {

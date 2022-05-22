@@ -194,6 +194,14 @@ input[type=checkbox] {
     left: -9999px;
 }
 
+.navCart {
+    margin-right: 8px;
+}
+
+.navCartIcon:hover {
+    cursor: pointer;
+}
+
 .ACCIMG:hover {
     cursor: pointer;
 }
@@ -211,15 +219,21 @@ input[type=checkbox] {
     display: block;
 }
 
+
 .SideCart {
-    background-color: rgb(255, 255, 255);
+    background-color: pink;
     height: 100vh;
-    width: 12vw;
+    width: 14vw;
     right: 0;
     top: 0;
     position: absolute;
-    z-index: 1000;
+    z-index: 1;
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.SideCartLi {
+    font-size: small;
+    margin: 1rem 0;
 }
 
 .SideCartItemDiv {
@@ -230,43 +244,33 @@ input[type=checkbox] {
     align-items: flex-start;
 }
 
-.SideCartSubtotal{
-    margin-left:-1rem;
+.SideCartSubtotal {
+    margin-left: -1rem;
     font-size: medium;
 }
 
-.SideCartItem{
+.SideCartItemtitle {
+    font-size: .9rem;
+}
+
+.SideCartItem {
     width: 100%;
-    height: 3.5rem;
+    height: 5rem;
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-.AddDltItem{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.SideCartItemSize,
+.SideCartItemColor,
+.SideCartItemQty {
+    font-size: .7rem;
+    font-weight: bold;
 }
 
-.SideCartBtn{
-    width: 2em;
-    height: 1.5em;
-    text-align: center;
-    /* margin: 0 .5rem; */
-}
 
-.SideCartDltBtn{
-    margin-left: 1rem;
-    width: 2em;
-}
-
-.SideCartItemQty{
-    background-color: rgb(218, 216, 216);
-    padding: 0 1em;
-    font-size: 15px;
-}
 
 @media screen and (max-width: 700px) and (min-width: 500px) {
 

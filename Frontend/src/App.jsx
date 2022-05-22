@@ -20,6 +20,7 @@ import OrderItem from './product/OrderItem';
 import UserState from './context/User/UserState';
 import ProductState from './context/Product/ProductState'
 import CartState from './context/Cart/CartState';
+import Checkout from './components/Checkout';
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
                   <Route exact path='/cart/cartitem' element={<CartItem />}></Route>
                   <Route exact path='/orders' element={<Orders />}></Route>
                   <Route exact path='/orders/orderitem' element={<OrderItem />}></Route>
+                  <Route exact path='/checkout' element={<Checkout />}></Route>
 
                 </Routes>
 

@@ -172,6 +172,8 @@
 .proBuybtn:disabled{
     opacity: 0.5;
     transform: none;
+    cursor: not-allowed;
+    pointer-events: all !important;
 }
 
 .proPrice,.Ofs {

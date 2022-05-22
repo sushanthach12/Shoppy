@@ -4,14 +4,14 @@ import productContext from '../context/Product/ProductContext'
 import cartContext from '../context/Cart/CartContext'
 import styles from '../styles/slug.module.css'
 
-const Slug = ({toggle, setToggle}) => {
+const Slug = ({ toggle, setToggle }) => {
 
 
 	const procontext = useContext(productContext);
 	const { product, variants, getProduct } = procontext;
 
 	const Cartcontext = useContext(cartContext);
-	const { cartItems, AddToCart} = Cartcontext;
+	const { AddToCart } = Cartcontext;
 
 	const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
 
@@ -21,7 +21,7 @@ const Slug = ({toggle, setToggle}) => {
 	useEffect(() => {
 		getProduct(slug)
 		// eslint-disable-next-line
-	},[])
+	}, [slug])
 
 	const [color, setColor] = useState(product.color)
 	const [size, setSize] = useState(product.size)
@@ -33,13 +33,12 @@ const Slug = ({toggle, setToggle}) => {
 		setSize(e.target.value)
 	}
 
-	console.log(variants);
 
 
-	const handleAddToCart = (title,slug, size,color, qty, amount) => {
+	const handleAddToCart = (title, slug, size, color, qty, amount) => {
 		setToggle(true)
 
-		AddToCart(title,slug, size,color, qty, amount)
+		AddToCart(title, slug, size, color, qty, amount)
 
 		setTimeout(() => {
 			setToggle(false)
@@ -59,7 +58,7 @@ const Slug = ({toggle, setToggle}) => {
 			<div className={styles.proDetail}>
 				<div>
 					<h2 className={styles.proPreHead}>Dystro</h2>
-					<h1 className={styles.proTitle}>{product.title} ({product.size}/{product.color})</h1>
+					<h1 className={styles.proTitle} >{product.title} ({product.size}/{product.color})</h1>
 
 
 					<div className={styles.proReview}>
@@ -143,12 +142,12 @@ const Slug = ({toggle, setToggle}) => {
 					<hr style={{ width: "inherit", margin: "0 auto", color: "rgb(175, 168, 168)" }} />
 
 					<div className={styles.proPriceBuy}>
-						{ (product.availableQty <= 0)? <p className={styles.Ofs}>Out of Stock!</p>:
-						<p className={styles.proPrice}>₹{product.price}</p>}
+						{(product.availableQty <= 0) ? <p className={styles.Ofs}>Out of Stock!</p> :
+							<p className={styles.proPrice}>₹{product.price}</p>}
 						<div className={styles.CheckBuyBtn}>
 
-							<button disabled={product.availableQty<=0} className={styles.proBuybtn}>Buy Now</button>
-							<button disabled={product.availableQty<=0} className={styles.proBuybtn} onClick={()=>{handleAddToCart(product.title,slug, size, color, 1,product.price)}} >Add To Cart</button>
+							<button disabled={product.availableQty <= 0} className={styles.proBuybtn}>Buy Now</button>
+							<button disabled={product.availableQty <= 0} className={styles.proBuybtn} onClick={() => { handleAddToCart(product.title, slug, size, color, 1, product.price) }} >Add To Cart</button>
 						</div>
 					</div>
 

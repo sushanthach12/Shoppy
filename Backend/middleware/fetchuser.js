@@ -4,7 +4,7 @@ const dotenv = require('dotenv').config();
 
 const fetchuser = (req, res, next) => {
     // GEt the user from the JWT token and append the id to req body
-    const token = req.headers.authToken
+    const token = req.header(`authToken`)
 
     if(!token){
         res.status(401).send({error: "Please authenticate using a valid token"})

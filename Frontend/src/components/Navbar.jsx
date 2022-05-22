@@ -4,8 +4,10 @@ import { Link, useLocation } from 'react-router-dom'
 import { RiAccountCircleFill } from 'react-icons/ri'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { FiShoppingCart } from 'react-icons/fi'
 import { MdDelete } from 'react-icons/md'
 import userContext from '../context/User/UserContext'
+import cartContext from '../context/Cart/CartContext'
 import LoadingBar from 'react-top-loading-bar'
 
 
@@ -13,8 +15,13 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
     const context = useContext(userContext);
     const { getUser } = context;
 
+    const Cartcontext = useContext(cartContext);
+    const { cartItems, FetchCart } = Cartcontext;
+
     const [username, setUsername] = useState("")
     const [progress, setProgress] = useState(0)
+
+    const [qty, setQty] = useState(1)
 
 
     const handleLogout = () => {
@@ -38,6 +45,9 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
         setProgress(100)
     }, [loc.pathname])
 
+    const handleToggler = () => {
+        setToggle(!toggle)
+    }
 
 
     return (
@@ -50,7 +60,7 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
                 onLoaderFinished={() => setProgress(0)}
             />
 
-            <div>
+            <div >
                 <header className={styles.navbar}>
                     <div className={styles.nav}>
                         <div className={styles.head}>
@@ -75,6 +85,7 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
                             </div>
                             <hr style={{ height: "1.5rem", width: "0", margin: "0 1rem" }} />
                             <div className={styles.navButton}>
+                                <label className={styles.navCart} onClick={handleToggler}><FiShoppingCart size={25} className={styles.navCartIcon} /></label>
                                 <div className={styles.accDrop}>
                                     <div className={styles.userInfo}>
                                         {((localStorage.getItem('token'))) ? <label className={styles.ACCIMG}><RiAccountCircleFill size={28} className={styles.navAccimg} /></label> : ""}
@@ -93,42 +104,33 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
                         </div>
                     </div>
 
-
-
-
-                    <div className={styles.SideCart} style={{display: `${toggle?"block":"none"}`}} >
+                    <div className={styles.SideCart} style={{ display: `${toggle ? "block" : "none"}` }} >
+                        
                         <div className={styles.SideCartItemDiv}>
                             <h4 className={styles.SideCartSubtotal}>Subtotal :₹5000 </h4>
                             <ol>
-                                <li>
-                                    <div className={styles.SideCartItem}>
-                                        <p>Item title</p>
-                                        <div className={styles.AddDltItem}>
-                                            <button className={styles.SideCartBtn}>-</button>
-                                            <span className={styles.SideCartItemQty}>1</span>
-                                            <button className={styles.SideCartBtn}>+</button>
-                                            <span className={styles.SideCartDltBtn}><MdDelete /></span>
+                                {cartItems.map((item) => {
+                                    return (
+                                        <li className={styles.SideCartLi}>
+                                            <div className={styles.SideCartItem}>
+                                                <p className={styles.SideCartItemtitle}>{item.title}</p>
+                                                <p className={styles.SideCartItemSize}>Size : {item.size}</p>
+                                                <p className={styles.SideCartItemColor}>Color : {item.color}</p>
+                                                <p className={styles.SideCartItemColor}>Qty : {item.quantity}</p>
+                                            </div>
+                                        </li>
+                                    )
+                                })}
 
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className={styles.SideCartItem}>
-                                        <p>Item title</p>
-                                        <div className={styles.AddDltItem}>
-                                            <button className={styles.SideCartBtn}>-</button>
-                                            <span className={styles.SideCartItemQty}>1</span>
-                                            <button className={styles.SideCartBtn}>+</button>
-                                            <span className={styles.SideCartDltBtn}><MdDelete /></span>
-
-                                        </div>
-                                    </div>
-                                </li>
                             </ol>
 
                         </div>
                     </div>
+
+
+
                 </header >
+
 
             </div >
 
