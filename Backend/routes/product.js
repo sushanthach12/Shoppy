@@ -7,81 +7,36 @@ const ArrangeProducts = (Products) => {
 
     //Can use aggregation pipeline to get the product
 
-    let PRODUCTS = {
-        Tshirts: {},
-        Pants: {},
-        Hoodies: {}
-    }
-
+    let PRODUCTS = {}
 
     for (let item of Products) {
-        if (item.category === 'tshirt') {
-
-            if (item.title in PRODUCTS.Tshirts) {
-                if (!PRODUCTS.Tshirts[item.title].slug.includes(item.slug) && item.availableQty > 0) {
-                    PRODUCTS.Tshirts[item.title].slug.push(item.slug)
-                }
-                if (!PRODUCTS.Tshirts[item.title].color.includes(item.color) && item.availableQty > 0) {
-                    PRODUCTS.Tshirts[item.title].color.push(item.color)
-                }
-                if (!PRODUCTS.Tshirts[item.title].size.includes(item.size) && item.availableQty > 0) {
-                    PRODUCTS.Tshirts[item.title].size.push(item.size)
-                }
-                if (!PRODUCTS.Tshirts[item.title].price.includes(item.price) && item.availableQty > 0) {
-                    PRODUCTS.Tshirts[item.title].price.push(item.price)
-                }
-
-
-            } else {
-                PRODUCTS.Tshirts[item.title] = JSON.parse(JSON.stringify(item))
-                if (item.availableQty > 0) {
-                    PRODUCTS.Tshirts[item.title].slug = [item.slug];
-                    PRODUCTS.Tshirts[item.title].size = [item.size];
-                    PRODUCTS.Tshirts[item.title].color = [item.color];
-                    PRODUCTS.Tshirts[item.title].price = [item.price];
-                }
+        if (item.title in PRODUCTS) {
+            if (!PRODUCTS[item.title].slug.includes(item.slug) && item.availableQty > 0) {
+                PRODUCTS[item.title].slug.push(item.slug)
+            }
+            if (!PRODUCTS[item.title].color.includes(item.color) && item.availableQty > 0) {
+                PRODUCTS[item.title].color.push(item.color)
+            }
+            if (!PRODUCTS[item.title].size.includes(item.size) && item.availableQty > 0) {
+                PRODUCTS[item.title].size.push(item.size)
+            }
+            if (!PRODUCTS[item.title].price.includes(item.price) && item.availableQty > 0) {
+                PRODUCTS[item.title].price.push(item.price)
             }
 
 
-        } else if (item.category === 'pant') {
-
-            if (item.title in PRODUCTS.Pants) {
-                if (!PRODUCTS.Pants[item.title].color.includes(item.color && item.availableQty > 0)) {
-                    PRODUCTS.Pants[item.title].color.push(item.color)
-                }
-                if (!PRODUCTS.Pants[item.title].color.includes(item.color && item.availableQty > 0)) {
-                    PRODUCTS.Pants[item.title].size.push(item.size)
-                }
-
-            } else {
-                PRODUCTS.Pants[item.title] = JSON.parse(JSON.stringify(item))
-                if (item.availableQty > 0) {
-                    PRODUCTS.Pants[item.title].size = [item.size];
-                    PRODUCTS.Pants[item.title].color = [item.color];
-                }
-            }
-        } else if (item.category === 'hoodies') {
-
-            if (item.title in PRODUCTS.Hoodies) {
-                if (!PRODUCTS.Hoodies[item.title].color.includes(item.color && item.availableQty > 0)) {
-                    PRODUCTS.Hoodies[item.title].color.push(item.color)
-                }
-                if (!PRODUCTS.Hoodies[item.title].color.includes(item.color && item.availableQty > 0)) {
-                    PRODUCTS.Hoodies[item.title].size.push(item.size)
-                }
-
-            } else {
-                PRODUCTS.Hoodies[item.title] = JSON.parse(JSON.stringify(item))
-                if (item.availableQty > 0) {
-                    PRODUCTS.Hoodies[item.title].size = [item.size];
-                    PRODUCTS.Hoodies[item.title].color = [item.color];
-                }
+        } else {
+            PRODUCTS[item.title] = JSON.parse(JSON.stringify(item))
+            if (item.availableQty > 0) {
+                PRODUCTS[item.title].slug = [item.slug];
+                PRODUCTS[item.title].size = [item.size];
+                PRODUCTS[item.title].color = [item.color];
+                PRODUCTS[item.title].price = [item.price];
             }
         }
     }
 
-    return PRODUCTS
-
+    return PRODUCTS;
 }
 
 
@@ -105,7 +60,7 @@ router.post('/addproduct', async (req, res) => {
             availableQty: availableQty
         })
 
-        res.json({ "Success": true, "Product": product});
+        res.json({ "Success": true, "Product": product });
 
     } catch (error) {
         console.log(error.message);
@@ -135,10 +90,16 @@ router.post('/getproduct', async (req, res) => {
 
     try {
 
-        const product = await Product.findOne({ 'slug': req.body.slug });
-        const products = await Product.find({ 'title': product.title });
-        let variants = {};
+        const product = await Product.aggregate([
+            {
+                '$match': {
+                    'slug': req.body.slug
+                }
+            }
+        ]);
+        const products = await Product.find({'title': product[0].title});
 
+        let variants = {};
 
         for (let item of products) {
             if (Object.keys(variants).includes(item.color)) {
@@ -152,13 +113,13 @@ router.post('/getproduct', async (req, res) => {
                 }
             }
         }
-        
-      
 
 
-        res.json({ "Success": true, "Product": product, "Variants": variants });
 
-    }catch (error) {
+
+        res.json({ "Success": true, "Product": product[0], "Variants": variants });
+
+    } catch (error) {
         console.log(error.message);
         res.status(500).send("Internal Server error")
     }
@@ -172,7 +133,13 @@ router.post('/getproducts', async (req, res) => {
     try {
 
 
-        let product = await Product.find()
+        let product = await Product.aggregate([
+            {
+                '$match': {
+                    'category': req.body.category
+                }
+            }
+        ])
         if (!product) {
             return res.status(400).json({ error: "Sorry No products found" })
         }

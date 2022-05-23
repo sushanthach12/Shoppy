@@ -1,0 +1,187 @@
+
+.tshirtmain{
+    margin: 6rem 0;
+    min-height: 60vh;
+}
+
+.TSHRTS {
+    display: flex;
+    /* grid-template-rows: repeat(auto, minmax(159px,200px)); */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 5rem;
+    flex-wrap: wrap;
+    background-color: white;
+    box-shadow: 1px 5px 10px rgb(215, 213, 213);
+}
+
+
+.tshirtHead {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    font-size: 25px;
+}
+
+.hr {
+    align-content: center;
+    width: 80%;
+    margin: .5rem auto;
+    color: rgb(218, 205, 205);
+}
+
+.proDiv {
+    margin: 1.8rem;
+    padding: 1rem 0;
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+}
+
+.proDiv a{
+    text-decoration: none;
+    color: black;
+}
+
+.imgDiv {
+    height: 14rem;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgb(244, 240, 240);
+}
+
+.imgDivImg {
+    display: block;
+    margin: auto;
+    width: 80%;
+}
+
+.proDivItem {
+    height: 27rem;
+    width: 16rem;
+    box-shadow: 2px 1px 10px #888888;
+    cursor: pointer;
+}
+
+.proDivContent {
+    margin: .5rem;
+    text-align: center;
+}
+
+.proReview {
+    height: 1.5rem;
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: .5rem;
+}
+
+.reviewStarDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.reviewStar {
+    width: 1rem;
+    height: 1rem;
+    margin-left: .2rem;
+    color: pink;
+}
+
+.proReviewNo {
+    margin-left: .6rem;
+    font-size: 13px;
+    text-align: center;
+}
+
+
+.itemCategory {
+    color: gray;
+    font-size: x-small;
+    margin-bottom: .5rem;
+}
+
+/* text-gray-900 title-font text-lg font-medium */
+
+.itemBrand {
+    font-size: medium;
+    font-weight: 700;
+    margin-top: .5rem;
+}
+.itemTitle {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: .5rem;
+}
+
+.desc {
+    margin-top: .5rem;
+    font-size: medium;
+}
+
+.itemPrice{
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: .5rem;
+}
+
+.variants {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    height: fit-content;
+    margin-top: .5rem;
+}
+
+.sizes{
+    display: flex;
+    flex-direction: row;
+}
+
+.itemSize {
+    color: rgb(60, 58, 58);
+    font-size: small;
+    border: .5px solid gray;
+    padding: 2px;
+    margin-left: 3px;
+}
+.itemSize:hover{
+    color: rgb(118, 105, 235);
+    cursor: pointer;
+    box-shadow: 2px 1px 4px #e7d1d1;
+}
+
+.colorDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: .2rem;
+}
+
+/* border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none */
+
+.itemColor {
+    padding: 8px;
+    border: none;
+    text-decoration: none;
+    border-radius: 50%;
+    margin-left: .3rem;
+    cursor: pointer;
+}
+
+.FreeDelivery{
+    font-size: 12px;
+    margin-top: .5rem;
+}

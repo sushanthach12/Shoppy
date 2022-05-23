@@ -3,27 +3,23 @@ import ProductContext from "./ProductContext";
 
 
 const ProductState = (props) => {
-  const [tshirts, setTshirts] = useState({})
-  const [hoodies, setHoodies] = useState({})
-  const [pants, setPants] = useState({})
+  const [products, setProducts] = useState({})
 
   const [product, setProduct] = useState({}) // For Slug page
   const [variants, setVariants] = useState({}) // For Slug page
 
-  const getProducts = async () => {
+  const getProducts = async (category) => {
 
     const res = await fetch(`${process.env.REACT_APP_HOST}/api/product/getproducts`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-      }
+      },
+      body: JSON.stringify({"category": category})
     })
 
     const response = await res.json();
-    setTshirts(response.Products.Tshirts);
-    setHoodies(response.Products.Hoodies);
-    setPants(response.Products.Pants);
-    // console.table(response.Products.Tshirts);
+    setProducts(response.Products)
   }
 
 
@@ -44,7 +40,7 @@ const ProductState = (props) => {
   }
 
   return (
-    <ProductContext.Provider value={{ tshirts, hoodies, variants, pants, product, getProducts, getProduct }}>
+    <ProductContext.Provider value={{ products, product,variants, getProducts, getProduct }}>
       {props.children}
     </ProductContext.Provider>
   )
