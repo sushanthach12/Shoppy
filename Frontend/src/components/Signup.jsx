@@ -48,16 +48,16 @@ const Signup = () => {
 
             <div className={styles.LoginEmail}>
               <label htmlFor="name" className={styles.credTitle}>Name</label>
-              <input type="text" id="name" name="name" className={styles.LoginInp} placeholder="Enter your name" value={credentials.name} onChange={handleChange }/>
+              <input autoComplete='off' type="text" id="name" name="name" className={styles.LoginInp} placeholder="Enter your name" value={credentials.name} onChange={handleChange }/>
             </div>
             <div className={styles.LoginEmail}>
               <label htmlFor="email" className={styles.credTitle}>Email</label>
-              <input type="email" id="email" name="email" className={styles.LoginInp} placeholder="Enter your email"  value={credentials.email} onChange={handleChange}/>
+              <input autoComplete='off' type="email" id="email" name="email" className={styles.LoginInp} placeholder="Enter your email"  value={credentials.email} onChange={handleChange}/>
             </div>
 
             <div className={styles.LoginPass}>
               <label htmlFor="password" className={styles.credTitle}>Password</label>
-              <input type="password" id="password" name="password" className={styles.LoginInp} placeholder="Enter your password" value={credentials.password} onChange={handleChange} />
+              <input autoComplete='off' type="password" id="password" name="password" className={styles.LoginInp} placeholder="Enter your password" value={credentials.password} onChange={handleChange} />
             </div>
 
 

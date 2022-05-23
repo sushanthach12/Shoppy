@@ -62,8 +62,8 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
                 <header className={styles.navbar}>
                     <div className={styles.nav}>
                         <div className={styles.head}>
-                            {/* <img className={styles.logo} src="/logo.png" alt="ss" /> */}
-                            <Link to={"/"} className={styles.tittle}><span className={styles.headD}>D</span>ystro</Link>
+                            <img className={styles.logo} src="/logo.png" alt="ss" />
+                            {/* <Link to={"/"} className={styles.tittle}><span className={styles.headD}>D</span>ystro</Link> */}
                         </div>
                         <input type="checkbox" id='toggler' className={styles.toggler}></input>
                         <label htmlFor='toggler'><GiHamburgerMenu className={styles.menu} size={25} /></label>
@@ -81,7 +81,7 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
                                     </div>
                                 </div>
                             </div>
-                            <hr style={{ height: "1.5rem", width: "0", margin: "0 1rem" }} />
+                            <hr style={{ height: "1.5rem", width: "0", margin: "0 1rem", color:"pink" }} />
                             <div className={styles.navButton}>
                                 <label className={styles.navCart} onClick={handleToggler}><FiShoppingCart size={25} className={styles.navCartIcon} /></label>
                                 <div className={styles.accDrop}>
@@ -111,10 +111,11 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
                                     return (
                                         <li className={styles.SideCartLi} key={item}>
                                             <div className={styles.SideCartItem}>
-                                                <p className={styles.SideCartItemtitle}>{cartItems[item].title}</p>
-                                                <p className={styles.SideCartItemSize}>Size : {cartItems[item].size}</p>
-                                                <p className={styles.SideCartItemColor}>Color : {cartItems[item].color}</p>
+                                                <p className={styles.SideCartItemtitle}>{cartItems[item].title} ({cartItems[item].size} / {cartItems[item].color} )</p>
+                                                <div className={styles.SideCartPriceDiv}>
                                                 <p className={styles.SideCartItemColor}>Qty : {cartItems[item].quantity}</p>
+                                                <p className={styles.SideCartItemPrice}>₹{cartItems[item].amount}</p>
+                                                </div>
                                             </div>
                                         </li>
                                     )

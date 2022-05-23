@@ -8,7 +8,8 @@ const Footer = () => {
     <footer className={styles.Footer}>
       <div className={styles.Foocontainer}>
         <div className={styles.Foohead}>
-          <Link to={"/"} className={styles.tittle}><span className={styles.headD}>D</span>ystro</Link>
+        <img className={styles.logo} src="/logo.png" alt="ss" />
+          {/* <Link to={"/"} className={styles.tittle}><span className={styles.headD}>D</span>ystro</Link> */}
           <p className={styles.FooCopyryt}>Copyright © 2020 Dystro</p>
         </div>
         <div className={styles.proSocLinks}>

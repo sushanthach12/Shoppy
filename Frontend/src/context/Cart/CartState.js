@@ -45,7 +45,6 @@ const CartState = (props) => {
             const response = await res.json();
             setCartItems(response.Cart)
             setSubTotal(response.SubTotal)
-            console.log(cartItems);
         }
     }
 

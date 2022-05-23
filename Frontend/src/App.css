@@ -3,11 +3,13 @@
     padding: 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     box-sizing: border-box;
+    
 }
 
 html {
     -ms-overflow-style: none;
     scrollbar-width: none;
+    background-color: #EAEDED !important;
 } 
 
 html::-webkit-scrollbar {
@@ -17,7 +19,7 @@ html::-webkit-scrollbar {
 .container{
     margin-top: 4.2rem;
     width: 100vw;
-    /* background-color: aqua; */
+    
 }
 
 @media screen and (max-width: 700px) and (min-width: 500px) {

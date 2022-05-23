@@ -2,13 +2,14 @@ import React, { useEffect, useContext } from 'react'
 import styles from '../styles/cart.module.css'
 import cartContext from '../context/Cart/CartContext'
 import { Link } from 'react-router-dom';
+import { BsFillPatchCheckFill } from "react-icons/bs";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 const Cart = (user) => {
   const Cartcontext = useContext(cartContext);
-  const { cartItems, FetchCart, RemoveFromCart } = Cartcontext;
+  const { cartItems, FetchCart, RemoveFromCart, subTotal } = Cartcontext;
 
   useEffect(() => {
     FetchCart()
@@ -36,11 +37,10 @@ const Cart = (user) => {
 
       <section className={styles.CartMain}>
         <h1 className={styles.CartHead}>Shopping Cart</h1>
-        <hr className='hr' />
 
-        {cartItems.length==0 && <p className={styles.CartEmptyMsg}>Your shopping cart is empty. <br/> Please build your cart</p> }
-        {cartItems && cartItems.length!==0 &&
-          <>
+        {cartItems.length == 0 && <p className={styles.CartEmptyMsg}>Your shopping cart is empty. <br /> Please build your cart</p>}
+        {cartItems && cartItems.length !== 0 &&
+          <div className={styles.CartContentContainer}>
             <div className={styles.CartItemDiv}>
 
               {Object.keys(cartItems).map((item) => {
@@ -87,11 +87,22 @@ const Cart = (user) => {
 
             </div>
 
-            <div className={styles.CartCheckout}>
-              <Link to={"/checkout"}><button className={styles.CartCheckoutBtn}>Checkout</button></Link>
+
+            <div className={styles.CartSubtotalDiv}>
+              <div className={styles.CartSubtotalContent}>
+                <div className={styles.CartPara}>
+                <BsFillPatchCheckFill size={19} color={"green"}/>
+                <p className={styles.CartSubtotalPara}>Your order is eligible for FREE Delivery.</p>
+                </div>
+                <p className={styles.CartSubtotal}>Subtotal (items) : ₹{subTotal}</p>
+                <div className={styles.CartCheckout}>
+                  <Link to={"/checkout"}><button className={styles.CartBuyBtn}>Proceed to Buy</button></Link>
+                </div>
+              </div>
             </div>
-          </>
+          </div>
         }
+
       </section>
     </>
   )

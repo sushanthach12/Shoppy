@@ -23,18 +23,63 @@
 }
 
 .CartItemDiv {
-    margin: 2rem auto;
-    width: 70vw;
+    margin: 1rem auto;
+    padding: 1rem 2.7rem ;
+    width: 80vw;
     display: grid;
     grid-template-columns: repeat(2, 2fr);
     gap: 5px;
     grid-auto-rows: minmax(100px, auto);
+    background-color: white;
+    box-shadow: 1px 5px 10px rgb(215, 213, 213);
+}
+
+.CartContentContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 2rem;
+}
+
+.CartSubtotalDiv{
+    width: 20vw;
+    height: 12rem;
+    margin: 1rem 1rem;
+    box-shadow: 1px 5px 10px rgb(215, 213, 213);
+    border: 10px;
+    background-color: white;
+}
+
+.CartSubtotalContent{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.CartSubtotal{
+    margin: .5rem 0;
+}
+
+.CartSubtotalPara{
+    font-size: 12px;
+    text-align: start;
+    margin: .5rem 0;
+}
+
+.CartPara{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin: .5rem ;
 }
 
 .CartItem {
     margin: .8rem 1rem;
     width: 30rem;
-    height: 9rem;
+    height: 12rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -63,11 +108,12 @@
 
 .CartItemImgDiv {
     width: 15vw;
+    height: 80%;
 }
 
 .CartItemImg {
-    width: 50%;
-    height: 100%;
+    width: 70%;
+    height: inherit;
     margin: 1rem auto;
     display: flex;
     flex-wrap: wrap;
@@ -78,11 +124,13 @@
 
 .CartItemContentDiv {
     width: 25vw;
-    height: 8rem;
-    padding: 0 1rem;
+    height: 90%;
+    padding: 1rem;
     border-left: 1px solid pink;
     margin: .5rem 0;
 }
+
+
 
 .CartItemTitle {
     margin: .5rem 0;
@@ -143,9 +191,9 @@
     margin: 1rem auto;
 }
 
-.CartCheckoutBtn {
-    flex: 0 1 auto;
-    margin: 1rem .5rem;
+.CartBuyBtn{
+    flex: 1 1 auto;
+    margin: .0 .5rem;
     padding: .7rem;
     text-align: center;
     text-transform: uppercase;
@@ -160,8 +208,7 @@
     border: none;
     background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
 }
-
-.CartCheckoutBtn:hover {
+.CartBuyBtn:hover {
     cursor: pointer;
     background-position: right center;
 }

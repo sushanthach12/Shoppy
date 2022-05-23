@@ -21,6 +21,8 @@ import UserState from './context/User/UserState';
 import ProductState from './context/Product/ProductState'
 import CartState from './context/Cart/CartState';
 import Checkout from './components/Checkout';
+import ScrollButton from './components/ScroolButton';
+import NotFound from './components/Error';
 
 
 function App() {
@@ -61,9 +63,10 @@ function App() {
                   <Route exact path='/orders' element={<Orders />}></Route>
                   <Route exact path='/orders/orderitem' element={<OrderItem />}></Route>
                   <Route exact path='/checkout' element={<Checkout />}></Route>
+                  <Route path='*' element={<NotFound/>}></Route>
 
                 </Routes>
-
+                <ScrollButton/>
               </div>
               <Footer />
             </CartState>

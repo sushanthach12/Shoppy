@@ -14,7 +14,7 @@ const Hoodies = () => {
   }, [])
 
   return (
-    <div>
+    <div className='tshirtmain'>
       <h3 className='tshirt-head'>Hoodies</h3>
       <hr className='hr' />
       <div className='TSHRTS'>
