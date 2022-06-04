@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext , useState} from 'react'
 import styles from '../styles/cart.module.css'
 import cartContext from '../context/Cart/CartContext'
 import { Link } from 'react-router-dom';
@@ -11,11 +11,22 @@ const Cart = (user) => {
   const Cartcontext = useContext(cartContext);
   const { cartItems, FetchCart, RemoveFromCart, subTotal } = Cartcontext;
 
+  const [qty, setQty] = useState(0)
+
   useEffect(() => {
     FetchCart()
+    SetQuantity()
   }, [])
 
-  console.log(cartItems);
+
+  const SetQuantity = () => {
+    let Count = 0;
+    Object.entries(cartItems).map((i)=> {
+      Count += cartItems[i].quantity
+    })
+    
+    setQty(Count)
+  }
 
   const handleRemoveCartItem = (slug) => {
     RemoveFromCart(slug)
@@ -38,7 +49,7 @@ const Cart = (user) => {
       <section className={styles.CartMain}>
         <h1 className={styles.CartHead}>Shopping Cart</h1>
 
-        {cartItems.length == 0 && <p className={styles.CartEmptyMsg}>Your shopping cart is empty. <br /> Please build your cart</p>}
+        {cartItems.length === 0 && <p className={styles.CartEmptyMsg}>Your shopping cart is empty. <br /> Please build your cart</p>}
         {cartItems && cartItems.length !== 0 &&
           <div className={styles.CartContentContainer}>
             <div className={styles.CartItemDiv}>
@@ -94,7 +105,7 @@ const Cart = (user) => {
                 <BsFillPatchCheckFill size={19} color={"green"}/>
                 <p className={styles.CartSubtotalPara}>Your order is eligible for FREE Delivery.</p>
                 </div>
-                <p className={styles.CartSubtotal}>Subtotal (items) : ₹{subTotal}</p>
+                <p className={styles.CartSubtotal} >Subtotal ({qty} items) : ₹{subTotal}</p>
                 <div className={styles.CartCheckout}>
                   <Link to={"/checkout"}><button className={styles.CartBuyBtn}>Proceed to Buy</button></Link>
                 </div>

@@ -1,7 +1,13 @@
 .slugSec {
     width: 100vw;
     height: 100vh;
-    padding: 3rem 10rem;
+}
+
+.mainContent{
+    background-color: white;
+    height:80vh;
+    margin: 6rem ;
+    padding: 4rem 10rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -131,9 +137,10 @@
 }
 
 .proPriceBuy {
-    width: 75%;
+    /* width: 75%; */
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 2rem 0;
@@ -184,4 +191,5 @@
 
 .Ofs{
     color: red;
+    font-size: large;
 }

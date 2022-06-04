@@ -53,20 +53,20 @@ function App() {
                   <Route exact path='/pants' element={<Pants />}></Route>
                   <Route exact path='/hoodies' element={<Hoodies />}></Route>
                   <Route exact path='/login' element={<Login setKey={setKey} setUser={setUser} />}></Route>
-                  <Route exact path='/signup' element={<Signup setKey={setKey} setUser={setUser}/>}></Route>
+                  <Route exact path='/signup' element={<Signup setKey={setKey} setUser={setUser} />}></Route>
 
 
                   <Route path='/product/:slug' element={<Slug toggle={toggle} setToggle={setToggle} />} />
                   <Route exact path='/user' element={<User />}></Route>
-                  <Route exact path='/cart' element={<Cart user/>}></Route>
+                  <Route exact path='/cart' element={<Cart user />}></Route>
                   <Route exact path='/cart/cartitem' element={<CartItem />}></Route>
                   <Route exact path='/orders' element={<Orders />}></Route>
                   <Route exact path='/orders/orderitem' element={<OrderItem />}></Route>
                   <Route exact path='/checkout' element={<Checkout />}></Route>
-                  <Route path='*' element={<NotFound/>}></Route>
+                  <Route path='*' element={<NotFound />}></Route>
 
                 </Routes>
-                <ScrollButton/>
+                <ScrollButton />
               </div>
               <Footer />
             </CartState>

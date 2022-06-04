@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import '../styles/home.css'
 import { BsArrowRightShort } from 'react-icons/bs'
 
@@ -9,6 +9,7 @@ const Home = () => {
 
 	return (
 		<div className='HOME'>
+			
 			{/* <div className="home-img">
 				<img src="https://www.dummyimage.com/1400x600" alt="" />
 			</div> */}

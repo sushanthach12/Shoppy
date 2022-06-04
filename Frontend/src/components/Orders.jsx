@@ -7,7 +7,6 @@ const Orders = () => {
   return (
     <section className={styles.OrderMain}>
       <h1 className={styles.OrderHead}>Your Orders</h1>
-      <hr className='hr' />
       <div className={styles.OrderItemDiv}>
         <div className={styles.OrderItem}>
           <div className={styles.OrderItemImgDiv}>
@@ -15,16 +14,42 @@ const Orders = () => {
           </div>
 
           <div className={styles.OrderItemContentDiv}>
-            <h2 className={styles.OrderItemTitle}>Shooting Stars</h2>
-            <p className={styles.OrderItemDesc}>Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
+            <h3 className={styles.OrderItemTitle}>Item Title (Item Size if any/ item color if any)</h3>
             <div className={styles.OrderItemTrack}>
-              <p className={styles.OrderItemOrderDate}>Ordered Date</p>
+              <p className={styles.OrderItemDelivered}>Delivered</p>
+              <p className={styles.OrderItemOrderDate}>Ordered Date : 25/06/2022</p>
               <Link to={"/orders/orderitem"}><p className={styles.OrderItemrackOr}>Track your order <IoIosArrowDroprightCircle /></p></Link>
             </div>
           </div>
         </div>
+        <div className={styles.OrderItem}>
+          <div className={styles.OrderItemImgDiv}>
+            <img src="https://m.media-amazon.com/images/I/61bDoqhvEPL._UX679_.jpg" alt="ecommerce" className={styles.OrderItemImg} />
+          </div>
 
-        <button className={styles.OrderCheckout}>Checkout</button>
+          <div className={styles.OrderItemContentDiv}>
+            <h3 className={styles.OrderItemTitle}>Item Title (Item Size if any/ item color if any)</h3>
+            <div className={styles.OrderItemTrack}>
+              <p className={styles.OrderItemDelivered}>Delivered</p>
+              <p className={styles.OrderItemOrderDate}>Ordered Date : 25/06/2022</p>
+              <Link to={"/orders/orderitem"}><p className={styles.OrderItemrackOr}>Track your order <IoIosArrowDroprightCircle /></p></Link>
+            </div>
+          </div>
+        </div>
+        <div className={styles.OrderItem}>
+          <div className={styles.OrderItemImgDiv}>
+            <img src="https://m.media-amazon.com/images/I/61bDoqhvEPL._UX679_.jpg" alt="ecommerce" className={styles.OrderItemImg} />
+          </div>
+
+          <div className={styles.OrderItemContentDiv}>
+            <h3 className={styles.OrderItemTitle}>Item Title (Item Size if any/ item color if any)</h3>
+            <div className={styles.OrderItemTrack}>
+              <p className={styles.OrderItemDelivered}>Delivered</p>
+              <p className={styles.OrderItemOrderDate}>Ordered Date : 25/06/2022</p>
+              <Link to={"/orders/orderitem"}><p className={styles.OrderItemrackOr}>Track your order <IoIosArrowDroprightCircle /></p></Link>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

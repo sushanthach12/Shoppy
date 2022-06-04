@@ -2,32 +2,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const OrderSchema = new Schema({
-    user: {
-        userId: {
-            type: String,
-            required: true
-        },
-        phoneNo: {
-            type: Number,
-            required: true
-        },
-        address: {
-            type: String,
-            required: true
-        },
-        pincode: {
-            type: Number,
-            required: true
-        },
-        country: {
-            type: String,
-            required: true
-        },
-        state: {
-            type: String,
-            required: true
-        }
-
+    userId: {
+        type: mongoose.Schema.Types.ObjectId, // Which user is loggedin 
+        ref: 'user'
     },
     Product: [
         {
@@ -36,6 +13,10 @@ const OrderSchema = new Schema({
                 required: true
             },
             variant: {
+                slug: {
+                    type: String,
+                    required: true
+                },
                 size: {
                     type: String,
                     required: true

@@ -3,17 +3,16 @@ import { Link, useLocation } from 'react-router-dom'
 import styles from '../styles/tshirts.module.css'
 import productContext from '../context/Product/ProductContext'
 
-
 const Tshirts = () => {
   const context = useContext(productContext);
   const { products, getProducts } = context;
 
+
   useEffect(() => {
     getProducts('tshirt')
     // eslint-disable-next-line 
-  }, [])
 
-  console.log(products);
+  }, [])
 
   return (
     <div className={styles.tshirtmain}>
@@ -24,7 +23,8 @@ const Tshirts = () => {
             <div className={styles.proDiv} key={products[item]._id}>
               <div className={styles.proDivItem}>
                 <div className={styles.imgDiv}>
-                  <img alt={`tshirt`} className={styles.imgDivImg} src={`https://m.media-amazon.com/images/I/31d+X3ls4IL._SX342_SY445_.jpg`} />
+                  <img alt={`tshirt`} className={styles.imgDivImg} src={products[item].image} />
+                  {/* <img alt={`tshirt`} className={styles.imgDivImg} src={`https://m.media-amazon.com/images/I/31d+X3ls4IL._SX342_SY445_.jpg`} /> */}
                 </div>
 
                 <div className={styles.proDivContent} >

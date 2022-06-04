@@ -12,7 +12,7 @@ router.post('/order',fetchuser, async (req, res) => {
 
         // Create a new PRoduct
         let order = await Order.create({
-            user: user,
+            userId: req.user.id,
             Product: Product
         })
 

@@ -12,12 +12,14 @@
 
 .OrderItemDiv{
     margin: .8rem auto;
-    width: 60vw;
+    padding: 1rem .5rem;
+    width: 80vw;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .OrderItem{
@@ -29,6 +31,7 @@
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 20px;
+    background-color: white;
 }
 
 .OrderItemImgDiv{
@@ -41,7 +44,6 @@
     margin: 1rem auto;
     display: flex;
     flex-wrap: wrap;
-
     justify-content: center;
     align-items: center;
 }
@@ -49,13 +51,12 @@
 .OrderItemContentDiv{
     width: 45vw;
     padding: .5rem 1rem;
-    border-left: 1px solid pink;
-    margin: .5rem 0;
+    border-left: 2px solid pink;
 }
 
 .OrderItemTitle{
     margin: .5rem 0;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     letter-spacing: 1px;
 }
 
@@ -73,7 +74,7 @@
     margin: 1rem 0 .5rem 0;
 }
 
-.OrderItemOrderDate, .OrderItemrackOr{
+.OrderItemOrderDate, .OrderItemrackOr, .OrderItemDelivered{
     font-size: small;
     color: gray;
 }
