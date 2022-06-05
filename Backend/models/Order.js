@@ -6,6 +6,11 @@ const OrderSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId, // Which user is loggedin 
         ref: 'user'
     },
+    OrderId:{
+        type:String,
+        unique: true,
+        default: "OrderID0"
+    },
     Product: [
         {
             title: {
