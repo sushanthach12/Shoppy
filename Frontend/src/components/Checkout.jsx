@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from "../styles/checkout.module.css"
+import orderContext from '../context/Order/OrderContext'
+import { useNavigate } from 'react-router-dom';
+
 
 const Checkout = () => {
+
+  const context = useContext(orderContext);
+  const { createOrder } = context;
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    createOrder();
+    let url = `/orders/orderitem`
+    navigate(url)
+  }
+
   return (
     <div className={styles.CHECKOUT}>
       <section className={styles.CheckoutSec}>
@@ -20,13 +35,13 @@ const Checkout = () => {
 
             <div className={styles.CartItemsDiv}>
               <span>Subtotal</span>
-              <div class={styles.CartItems}>
-                <div class={styles.CartItem}>
-                  <span class="title-font font-medium">Cart Item title here</span>
-                  <span class="title-font font-medium">Item Size</span>
-                  <span class="title-font font-medium">Item Color</span>
-                  <span class="title-font font-medium">item Quantity</span>
-                  <span class="title-font font-medium">item Amount</span>
+              <div className={styles.CartItems}>
+                <div className={styles.CartItem}>
+                  <span className="title-font font-medium">Cart Item title here</span>
+                  <span className="title-font font-medium">Item Size</span>
+                  <span className="title-font font-medium">Item Color</span>
+                  <span className="title-font font-medium">item Quantity</span>
+                  <span className="title-font font-medium">item Amount</span>
                 </div>
               </div>
             </div>
@@ -78,7 +93,7 @@ const Checkout = () => {
               </div>
 
               <div className={styles.CheckoutBtnDiv}>
-                <button className={styles.CheckoutBtn}>Pay Now</button>
+                <button className={styles.CheckoutBtn} onClick={() => { handleClick() }}>Pay Now</button>
               </div>
             </div>
           </div>

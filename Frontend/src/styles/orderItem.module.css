@@ -1,0 +1,136 @@
+.ORDERITEM{
+    width: 100vw;
+    min-height: 80vh;
+}
+
+.Section{
+    padding: 1rem;
+    margin: 6rem 0;
+}
+
+.container{
+    width: 75vw;
+    padding: 2rem;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.ContentDiv{
+    width: 50vw;
+}
+
+.Content{
+    padding: .5rem;
+    margin: 0 1rem;
+}
+
+.OrderId{
+    font-size: medium;
+    margin-bottom: .4rem;
+    color: green;
+}
+
+.OID{
+    font-weight: 400;
+    color: black;
+}
+
+.Status{
+    font-size: .8rem;
+    margin-bottom: 1rem;
+}
+
+.stat{
+    font-weight: 600;
+}
+
+.BrandName{
+    font-size: medium;
+    letter-spacing: 1px;
+    color: grey;
+    font-weight: 300;
+    margin-bottom: .5rem;
+}
+
+.ProTitle{
+    letter-spacing: 1px;
+    font-size:1.5rem;
+    margin-bottom: 1rem;
+}
+
+.DescDiv{
+    height: 8rem;
+    margin-bottom: .5rem;
+    padding: .2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.desc{
+    font-size: 15px;
+    width: 7rem;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid pink;
+    margin-bottom: .5rem;
+}
+
+
+.descText{
+    font-size: 15px;
+    word-spacing: 1px;
+    margin-bottom: .5rem;
+}
+
+.ColorDiv,.SizeDiv, .QtyDiv{
+    width: 80%;
+    padding: .5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgb(183, 180, 180);
+}
+
+.QtyDiv{
+    border-bottom: 1px solid rgb(183, 180, 180);
+
+}
+
+.PriceDiv{
+    margin: 1.5rem 0 1rem 0;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.price{
+    font-size: 1.3rem;
+}
+
+.TractOrderBtn{
+    flex: 0 1 auto;
+    cursor: pointer;
+    margin: 0 .5rem;
+    padding: .7rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    border: none;
+    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}

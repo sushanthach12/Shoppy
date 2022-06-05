@@ -34,7 +34,7 @@ const CartState = (props) => {
     const FetchCart = async () => {
         const token = localStorage.getItem('token')
         if (token) {
-
+            
             const res = await fetch(`${process.env.REACT_APP_HOST}/api/cart/fetchcart`, {
                 method: 'POST',
                 headers: {

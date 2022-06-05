@@ -16,12 +16,12 @@ const Cart = (user) => {
   useEffect(() => {
     FetchCart()
     SetQuantity()
-  }, [])
+  }, [window.onload])
+  
 
-
-  const SetQuantity = () => {
+  const SetQuantity = async() => {
     let Count = 0;
-    Object.entries(cartItems).map((i)=> {
+     Object.keys(cartItems).map((i)=> {
       Count += cartItems[i].quantity
     })
     

@@ -33,9 +33,13 @@ const Navbar = ({ user, setUser, setKey, toggle, setToggle }) => {
             setUsername(res)
         }
         GetUser()
-        FetchCart()
     }, [user])
-
+    
+    useEffect(() => {
+        FetchCart()
+     
+    }, [])
+    
     let loc = useLocation()
     useEffect(() => {
         setProgress(30)
