@@ -10,12 +10,11 @@ const ProductState = (props) => {
 
   const getProducts = async (category) => {
 
-    const res = await fetch(`${process.env.REACT_APP_HOST}/api/product/getproducts`, {
+    const res = await fetch(`${process.env.REACT_APP_HOST}/api/product/getproducts/${category}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({"category": category})
+      }
     })
 
     const response = await res.json();
@@ -24,13 +23,11 @@ const ProductState = (props) => {
 
 
   const getProduct = async (slug) => {
-    const res = await fetch(`${process.env.REACT_APP_HOST}/api/product/getproduct`, {
+    const res = await fetch(`${process.env.REACT_APP_HOST}/api/product/getproduct/${slug}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-      },
-
-      body: JSON.stringify({slug})
+      }
 
     })
     const response = await res.json();

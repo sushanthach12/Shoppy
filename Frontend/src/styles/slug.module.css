@@ -160,6 +160,7 @@
     cursor: pointer;
     margin: 0 .5rem;
     text-align: center;
+    padding: .5rem;
     text-transform: uppercase;
     font-weight: 700;
     transition: 0.5s;

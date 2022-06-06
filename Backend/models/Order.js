@@ -11,36 +11,16 @@ const OrderSchema = new Schema({
         unique: true,
         default: "OrderID0"
     },
-    Product: [
-        {
-            title: {
-                type: String,
-                required: true
-            },
-            variant: {
-                slug: {
-                    type: String,
-                    required: true
-                },
-                size: {
-                    type: String,
-                    required: true
-                },
-                color: {
-                    type: String,
-                    required: true
-                }
-            },
-            quantity: {
-                type: Number,
-                default: 1
-            },
-            amount: {
-                type: Number,
-                required: true
-            }
-        }
-    ]
+    Product: {type: Object, required: true},
+    paymentInfo : {
+        type: String,
+        default: "Pending"
+    },
+    status : {
+        type: String,
+        default: "Pending",
+        required: true
+    }
 
 }, { timestamps: true })
 

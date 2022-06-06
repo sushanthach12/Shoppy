@@ -50,13 +50,12 @@ const CartState = (props) => {
 
     const RemoveFromCart = async (slug) => {
 
-        const res = await fetch(`${process.env.REACT_APP_HOST}/api/cart/removeitem`, {
+        const res = await fetch(`${process.env.REACT_APP_HOST}/api/cart/removeitem/${slug}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'authToken': localStorage.getItem('token')
-            },
-            body: JSON.stringify({ "slug": slug })
+            }
         })
         const response = await res.json();
         if (response.Success) {

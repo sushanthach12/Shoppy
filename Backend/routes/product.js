@@ -86,14 +86,14 @@ router.post('/addproducts', async (req, res) => {
 
 //Route 2 : Get a Product using: POST "/api/product/getproduct". No login required
 
-router.post('/getproduct', async (req, res) => {
+router.post('/getproduct/:slug', async (req, res) => {
 
     try {
 
         const product = await Product.aggregate([
             {
                 '$match': {
-                    'slug': req.body.slug
+                    'slug': req.params.slug
                 }
             }
         ]);
@@ -128,7 +128,7 @@ router.post('/getproduct', async (req, res) => {
 
 
 //Route 3 : Get all the available products using: POST "/api/product/getproducts" .No login required
-router.post('/getproducts', async (req, res) => {
+router.post('/getproducts/:category', async (req, res) => {
 
     try {
 
@@ -136,7 +136,7 @@ router.post('/getproducts', async (req, res) => {
         let product = await Product.aggregate([
             {
                 '$match': {
-                    'category': req.body.category
+                    'category': req.params.category
                 }
             }
         ])

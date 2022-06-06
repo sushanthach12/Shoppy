@@ -16,7 +16,7 @@ const Cart = (user) => {
   useEffect(() => {
     FetchCart()
     SetQuantity()
-  }, [window.onload])
+  }, [window.onloadstart])
   
 
   const SetQuantity = async() => {
@@ -31,6 +31,8 @@ const Cart = (user) => {
   const handleRemoveCartItem = (slug) => {
     RemoveFromCart(slug)
   }
+
+  console.log(Object.keys(cartItems).length);
 
   return (
     <>
@@ -49,8 +51,7 @@ const Cart = (user) => {
       <section className={styles.CartMain}>
         <h1 className={styles.CartHead}>Shopping Cart</h1>
 
-        {cartItems.length === 0 && <p className={styles.CartEmptyMsg}>Your shopping cart is empty. <br /> Please build your cart</p>}
-        {cartItems && cartItems.length !== 0 &&
+        {(Object.keys(cartItems).length)?
           <div className={styles.CartContentContainer}>
             <div className={styles.CartItemDiv}>
 
@@ -112,6 +113,8 @@ const Cart = (user) => {
               </div>
             </div>
           </div>
+
+          : <p className={styles.CartEmptyMsg}>Your shopping cart is empty. <br /> Please build your cart</p>
         }
 
       </section>

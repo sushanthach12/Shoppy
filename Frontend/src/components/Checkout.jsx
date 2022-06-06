@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import styles from "../styles/checkout.module.css"
 import orderContext from '../context/Order/OrderContext'
+import cartContext from '../context/Cart/CartContext'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -9,11 +10,14 @@ const Checkout = () => {
   const context = useContext(orderContext);
   const { createOrder } = context;
 
+  const Cartcontext = useContext(cartContext);
+  const { cartItems } = Cartcontext;
+
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    createOrder();
-    let url = `/orders/orderitem`
+  const handleClick = async() => {
+    const oid = await createOrder(cartItems);
+    let url = `/orders/${oid}`
     navigate(url)
   }
 

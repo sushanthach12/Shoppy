@@ -5,8 +5,9 @@ import { toast } from 'react-toastify';
 const OrderState = (props) => {
 
     const [products, setProducts] = useState({})
+    const [orderItem, setOrderItem] = useState({})
 
-    const createOrder = async() => {
+    const createOrder = async(cart) => {
         const res = await fetch(`${process.env.REACT_APP_HOST}/api/Order/order`, {
             method: 'POST',
             headers: {
@@ -14,22 +15,12 @@ const OrderState = (props) => {
                 'authToken': localStorage.getItem('token')
             },
             body: JSON.stringify({
-                "Product":[
-                    {
-                        "title": "susdchamths",
-                        "variant": {
-                            "slug": "sjanckk2",
-                            "size":"XXL",
-                            "color": "green"
-                        },
-                        "quantity": 2,
-                        "amount": 499
-                    }
-                ]
+                "Product": cart
             })
         })
 
         const response = await res.json();
+        return await response.Order.OrderId
     }
     const getOrders = async() => {
         const res = await fetch(`${process.env.REACT_APP_HOST}/api/Order/getOrders`, {
@@ -41,13 +32,25 @@ const OrderState = (props) => {
         })
         
         const response = await res.json();
+        setProducts(response.Order['0']);
+
+    }
+    const getOrder = async(oid) => {
+        const res = await fetch(`${process.env.REACT_APP_HOST}/api/Order/orderItem/${oid}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'authToken': localStorage.getItem('token')
+            }
+        })
+        
+        const response = await res.json();
         console.log(response);
-        setProducts(response.Order);
+        setOrderItem(response.Order)
     }
 
-
     return (
-        <OrderContext.Provider value={{ products, getOrders, createOrder }}>
+        <OrderContext.Provider value={{ products,orderItem, getOrders, createOrder, getOrder }}>
             {props.children}
         </OrderContext.Provider>
     )

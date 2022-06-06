@@ -53,10 +53,10 @@ router.post('/fetchcart', fetchuser, async (req, res) => {
 
 })
 
-router.post('/removeitem', async (req, res) => {
+router.post('/removeitem/:slug', async (req, res) => {
 
     try {
-        let cart = await Cart.findOneAndDelete({ "slug": req.body.slug })
+        let cart = await Cart.findOneAndDelete({ "slug": req.params.slug })
 
         return res.json({ "Success": true, "Cart": cart });
 

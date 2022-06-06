@@ -6,12 +6,16 @@
 .Section{
     padding: 1rem;
     margin: 6rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .container{
     width: 75vw;
     padding: 2rem;
-    margin: auto;
+    margin: .5rem 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -23,6 +27,14 @@
 
 .ContentDiv{
     width: 50vw;
+}
+
+.StatusDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    padding: .5rem 0;
 }
 
 .Content{
@@ -41,9 +53,14 @@
     color: black;
 }
 
-.Status{
+.Status,.Delivered{
     font-size: .8rem;
     margin-bottom: 1rem;
+}
+.Delivered{
+    color: green;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 .stat{
