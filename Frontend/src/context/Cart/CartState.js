@@ -73,8 +73,19 @@ const CartState = (props) => {
 
     }
 
+    const Clearcart = async() =>{
+        const res = await fetch(`${process.env.REACT_APP_HOST}/api/cart/clearCart`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'authToken': localStorage.getItem('token')
+            }
+        })
+        const response = await res.json();
+    }
+
     return (
-        <CartContext.Provider value={{ cartItems,subTotal, AddToCart, FetchCart, RemoveFromCart }}>
+        <CartContext.Provider value={{ cartItems,subTotal, AddToCart, FetchCart, RemoveFromCart, Clearcart }}>
             {props.children}
         </CartContext.Provider>
     )

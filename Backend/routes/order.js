@@ -3,6 +3,7 @@ const Order = require('../models/Order')
 const router = express.Router();
 const fetchuser = require('../middleware/fetchuser')
 const crypto = require('crypto');
+const { ObjectId } = require('mongodb');
 
 
 router.post('/order', fetchuser, async (req, res) => {
@@ -33,13 +34,25 @@ router.post('/getOrders', fetchuser, async (req, res) => {
 
     try {
 
-        const Orders = await Order.find({ "userId": req.user.id })
+        // const Orders = await Order.find({ "userId": req.user.id })
+        const Orders = await Order.aggregate([
+            {
+                '$match': {
+                  'userId': new ObjectId(`${req.user.id}`)
+                }
+              }, {
+                '$sort': {
+                  'createdAt': -1
+                }
+              }
+        ])
         if (!Orders) {
             return res.status(400).json({ error: "Sorry No Orders found" })
         }
 
 
-        res.json({ "Success": true, "Order": { ...Orders } });
+
+        res.json({ "Success": true, "Order": {...Orders} });
 
     } catch (error) {
         console.log(error.message);

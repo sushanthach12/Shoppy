@@ -13,6 +13,8 @@ const Orders = () => {
     getOrders();
   }, [])
 
+  console.log(products);
+
 
   return (
     <section className={styles.OrderMain}>

@@ -65,7 +65,7 @@ function App() {
                     <Route exact path='/cart/cartitem' element={<CartItem />}></Route>
                     <Route exact path='/orders' element={<Orders />}></Route>
                     <Route exact path='/orders/orderitem/:oid' element={<OrderItem />}></Route>
-                    <Route exact path='/orders/:oid' element={<Ordered/>}></Route>
+                    <Route exact path='/orders/ordered/:oid' element={<Ordered/>}></Route>
                     <Route exact path='/checkout' element={<Checkout />}></Route>
                     <Route path='*' element={<NotFound />}></Route>
 

@@ -11,13 +11,14 @@ const Checkout = () => {
   const { createOrder } = context;
 
   const Cartcontext = useContext(cartContext);
-  const { cartItems } = Cartcontext;
+  const { cartItems, Clearcart } = Cartcontext;
 
   const navigate = useNavigate();
 
   const handleClick = async() => {
     const oid = await createOrder(cartItems);
-    let url = `/orders/${oid}`
+    let url = `/orders/ordered/${oid}`
+    Clearcart()
     navigate(url)
   }
 

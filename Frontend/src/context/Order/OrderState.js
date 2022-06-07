@@ -32,7 +32,7 @@ const OrderState = (props) => {
         })
         
         const response = await res.json();
-        setProducts(response.Order['0']);
+        setProducts(response.Order);
 
     }
     const getOrder = async(oid) => {

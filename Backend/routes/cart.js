@@ -53,10 +53,23 @@ router.post('/fetchcart', fetchuser, async (req, res) => {
 
 })
 
-router.post('/removeitem/:slug', async (req, res) => {
+router.post('/removeitem/:slug',fetchuser, async (req, res) => {
 
     try {
         let cart = await Cart.findOneAndDelete({ "slug": req.params.slug })
+
+        return res.json({ "Success": true, "Cart": cart });
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send("Internal Server error")
+    }
+
+})
+router.post('/clearCart',fetchuser, async (req, res) => {
+
+    try {
+        let cart = await Cart.deleteMany({ "userId": req.user.id })
 
         return res.json({ "Success": true, "Cart": cart });
 
