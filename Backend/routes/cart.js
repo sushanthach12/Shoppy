@@ -53,6 +53,7 @@ router.post('/fetchcart', fetchuser, async (req, res) => {
 
 })
 
+
 router.post('/removeitem/:slug',fetchuser, async (req, res) => {
 
     try {

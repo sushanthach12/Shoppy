@@ -1,5 +1,4 @@
 const express = require('express');
-const cookieParser = require('cookie-parser')
 var cors = require('cors');
 const connectDB = require('./db');
 
@@ -10,7 +9,6 @@ connectDB();
 
 app.use(cors())
 app.use(express.json()) // if you want use req body , you have to use thsi
-app.use(cookieParser())
 
 
 // available routes
