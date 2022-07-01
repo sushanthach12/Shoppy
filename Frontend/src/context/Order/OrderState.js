@@ -33,8 +33,8 @@ const OrderState = (props) => {
         
         const response = await res.json();
         setProducts(response.Order);
-
     }
+    
     const getOrder = async(oid) => {
         const res = await fetch(`${process.env.REACT_APP_HOST}/api/Order/orderItem/${oid}`, {
             method: 'POST',

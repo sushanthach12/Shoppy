@@ -10,6 +10,7 @@ html {
     -ms-overflow-style: none;
     scrollbar-width: none;
     background-color: #EAEDED !important;
+    scroll-behavior: smooth;
 } 
 
 html::-webkit-scrollbar {

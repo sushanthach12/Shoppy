@@ -1,0 +1,38 @@
+.HOME {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    height: 80vh;
+}
+
+.main {
+    margin: 1rem 4rem;
+    color: rgb(18, 17, 17);
+    font-weight: 600;
+}
+
+.homeContainer{
+    width: 80%;
+}
+
+.ImageContainer{
+    background-color: white;
+    width: inherit;
+}
+
+.mainImg{
+    background-repeat: no-repeat;
+    background-position: center;
+    width: inherit;
+}
+
+
+@media screen and (max-width: 700px) and (min-width: 500px) {
+}
+
+
+
+@media screen and (max-width: 500px) {
+}

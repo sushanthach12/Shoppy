@@ -8,7 +8,8 @@ const ScrollButton = () => {
         "width": "2rem",
         "height": "2rem",
         "right": "1%",
-        "position": "absolute"
+        "position": "absolute",
+        "zIndex":"99999"
     }
     const StylesDiv = {
         "display": `${isShow? 'inline' : 'none'}`,
@@ -42,8 +43,6 @@ const ScrollButton = () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
-            /* you can also use 'auto' behaviour
-                in place of 'smooth' */
         });
     };
 
@@ -53,7 +52,7 @@ const ScrollButton = () => {
         <>
             <div style={Styles} placeholder={"Scroll to Top"} onMouseOver={()=>{setIsShow(true)}} onMouseLeave={()=>{setIsShow(false)}}>
                 <BsFillArrowUpCircleFill onClick={scrollToTop}
-                    style={{ display: visible ? 'inline' : 'none', width: "100%", height: "80%", color: "green" }} />
+                    style={{ display: visible ? 'inline' : 'none', width: "100%", height: "80%", color: "orange" }} size={30}/>
             </div>
             <div style={StylesDiv}>Scroll to Top</div>
         </>

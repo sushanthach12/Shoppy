@@ -85,9 +85,9 @@
     margin: 0 .5rem;
 }
 
-.navAccimg:hover {
+/* .navAccimg:hover {
     transform: translateY(-1px);
-}
+} */
 
 .navAccimg:hover~.accDrop {
     display: block;
